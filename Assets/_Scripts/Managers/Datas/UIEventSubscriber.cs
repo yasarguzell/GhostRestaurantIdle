@@ -4,9 +4,10 @@ using UnityEngine;
 
 public class UIEventSubscriber : MonoBehaviour
 {
+  //button
   public  void OnClick()
     {
         Debug.Log("Clicked");
-        TestUpdateData.Instance.onSendData.Invoke(45F);
+        CoreGameSignals.Instance.onDataValueX?.Invoke(45F);
     }
 }

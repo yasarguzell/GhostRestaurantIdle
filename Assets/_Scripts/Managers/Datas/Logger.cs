@@ -4,7 +4,9 @@ using UnityEngine;
 
 public class Logger : MonoBehaviour
 {
+    // npc player vb controllerı
     SODataHolder soDataHolder;
+    float test=5;
 
     void Awake()
     {
@@ -13,7 +15,7 @@ public class Logger : MonoBehaviour
 
     private SODataHolder GetDataHolder()
     {
-        return Resources.Load<SODataHolder>("Datas/SODataHolder");
+         return Resources.Load<SODataHolder>("Datas/SODataHolder");
     }
 
     void Update()
@@ -22,5 +24,7 @@ public class Logger : MonoBehaviour
         {
             Debug.Log("valueB: " + soDataHolder.dataHolder.valueB);
         }
+        float test2=test*soDataHolder.dataHolder.valueB;
+        Debug.Log(test2);
     }
 }

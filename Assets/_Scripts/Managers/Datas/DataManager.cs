@@ -5,8 +5,9 @@ using UnityEngine;
 
 public class DataManager : MonoBehaviour
 {
+    // update ref
     SODataHolder soDataHolder;
-    float value;
+    
     
     void Awake()
     {
@@ -14,16 +15,16 @@ public class DataManager : MonoBehaviour
     }
     void Start()
     {
-        TestUpdateData.Instance.onSendData+=GetData;
+        CoreGameSignals.Instance.onDataValueX+=GetData;
         
     }
 
     private void GetData(float arg0)
 {
-    value = arg0;
+   
     if (soDataHolder != null)
     {
-        soDataHolder.dataHolder.valueB = arg0;
+        soDataHolder.dataHolder.valueB += arg0;
     }
 }
 
@@ -34,11 +35,5 @@ public class DataManager : MonoBehaviour
         return Resources.Load<SODataHolder>("Datas/SODataHolder");
     }
 
-   void Update()
-   {
-    
-    value=soDataHolder.dataHolder.valueB;
-    
-    Debug.Log(value);
-   }
+  
 }
