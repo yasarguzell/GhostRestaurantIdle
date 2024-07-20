@@ -1,18 +1,17 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class TestUpdateData : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+  // EVENT
+  public static TestUpdateData Instance { get; private set; }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+  private void Awake()
+  {
+    Instance = this;
+  }
+
+  public UnityAction<float> onSendData=delegate{};
 }
