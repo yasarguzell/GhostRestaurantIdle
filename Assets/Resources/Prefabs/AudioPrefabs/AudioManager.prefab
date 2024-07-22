@@ -1,0 +1,80 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &8066627212348549759
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6496729153010332163}
+  - component: {fileID: 3152974488613310850}
+  m_Layer: 0
+  m_Name: AudioManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6496729153010332163
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8066627212348549759}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3152974488613310850
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8066627212348549759}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e4ccc994c9a25ec43b9c10294786899a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  audioElementList:
+  - name: Background Music
+    audioClip: {fileID: 8300000, guid: 719769a5a6b0ec94783d5c0ef3ada2e9, type: 3}
+    volume: 0.1
+    pitch: 1
+    pitchRandomness: 0
+    isLooping: 1
+    audioSourceTransform: {fileID: 0}
+    audioSource: {fileID: 0}
+  - name: Switch
+    audioClip: {fileID: 8300000, guid: 0dfeee20f2382ac488eec1fd2c0875bd, type: 3}
+    volume: 0.5
+    pitch: 0.85
+    pitchRandomness: 0
+    isLooping: 0
+    audioSourceTransform: {fileID: 0}
+    audioSource: {fileID: 0}
+  - name: Pickup
+    audioClip: {fileID: 8300000, guid: 27ae34b82dd34d34082f84981e738422, type: 3}
+    volume: 0.4
+    pitch: 1
+    pitchRandomness: 0
+    isLooping: 0
+    audioSourceTransform: {fileID: 0}
+    audioSource: {fileID: 0}
+  - name: Deny
+    audioClip: {fileID: 8300000, guid: 3099807f80680ce49a7801b03f5675b5, type: 3}
+    volume: 0.5
+    pitch: 1
+    pitchRandomness: 0
+    isLooping: 0
+    audioSourceTransform: {fileID: 0}
+    audioSource: {fileID: 0}
+  audioSourcePrefab: {fileID: 2198678260740374931, guid: a5df8293e26e77d49bc1de0b25006e7d, type: 3}
