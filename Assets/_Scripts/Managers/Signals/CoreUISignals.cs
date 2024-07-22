@@ -5,31 +5,37 @@ using UnityEngine.Events;
 
 public class CoreUISignals : MonoBehaviour
 {
-  public UnityAction onOpenPausePanel = delegate { };
-  public UnityAction onClosePausePanel= delegate { };
+    public UnityAction onOpenPausePanel = delegate { };
+    public UnityAction onClosePausePanel = delegate { };
+    public UnityAction onOpenLoungePanel = delegate { };
+    public UnityAction onCloseLoungePanel = delegate { };
+    public UnityAction onOpenKitchenPanel = delegate { };
+    public UnityAction onCloseKitchenPanel = delegate { };
+    public UnityAction onOpenWashingPanel = delegate { };
+    public UnityAction onCloseWashingPanel = delegate { };
 
 
 
 
 
 
-public UnityAction<byte> onRoomUIIndex = delegate { };
-public static CoreUISignals Instance { get; set; }
-void Awake()
-{
-    if (Instance == null)
+    public UnityAction<int> onRoomUIIndex = delegate { };
+    public static CoreUISignals Instance { get; set; }
+    void Awake()
     {
-        Instance = this;
-        
-        if (transform.parent != null)
+        if (Instance == null)
         {
-            transform.SetParent(null);
+            Instance = this;
+
+            if (transform.parent != null)
+            {
+                transform.SetParent(null);
+            }
+            DontDestroyOnLoad(this.gameObject);
         }
-        DontDestroyOnLoad(this.gameObject);
+        else
+        {
+            Destroy(this.gameObject);
+        }
     }
-    else
-    {
-        Destroy(this.gameObject);
-    }
-}
 }

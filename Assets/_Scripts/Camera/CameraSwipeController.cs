@@ -31,12 +31,14 @@ public class CameraSwipeController : MonoBehaviour
             {
                 MoveCameraLeft();
                 mapIndex--;
+                CoreUISignals.Instance.onRoomUIIndex(mapIndex);
                 //event(index)
             }
             else if (Mathf.Abs(swipeDelta.x) > Mathf.Abs(swipeDelta.y) && swipeDelta.x < 0 && mapIndex < 2/*maps.Count*/)
             {
                 MoveCameraRight();
                 mapIndex++;
+                CoreUISignals.Instance.onRoomUIIndex(mapIndex);
                 //event(index)
             }
             else if (Mathf.Abs(swipeDelta.x) < Mathf.Abs(swipeDelta.y) && swipeDelta.y < 0)
