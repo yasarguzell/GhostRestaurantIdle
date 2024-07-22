@@ -542,6 +542,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cameraSpeed: 12
+  size: 12
 --- !u!1 &740728433
 GameObject:
   m_ObjectHideFlags: 0

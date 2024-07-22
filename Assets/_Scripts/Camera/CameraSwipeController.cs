@@ -3,7 +3,8 @@ using UnityEngine;
 
 public class CameraSwipeController : MonoBehaviour
 {
-    public float cameraSpeed = 0.2f; 
+    public float cameraSpeed = 0.2f;
+    public float size = 12f;
     private Vector2 startTouchPosition, endTouchPosition;
     private bool isDragging = false;
     private int mapIndex = 0;
@@ -11,11 +12,15 @@ public class CameraSwipeController : MonoBehaviour
     private void Start()
     {
         mapIndex = 0;
+        float aspectRatio = (float)Screen.width / (float)Screen.height;
+        Camera.main.orthographicSize = size / (2.0f * aspectRatio);
         //Camera.main.aspect = (float)Screen.width / (float)Screen.height;
     }
 
     void Update()
     {
+        //float aspectRatio = (float)Screen.width / (float)Screen.height;
+        //Camera.main.orthographicSize = cameraSpeed / (2.0f * aspectRatio);
         if (Input.GetMouseButtonDown(0))
         {
             startTouchPosition = Input.mousePosition;
