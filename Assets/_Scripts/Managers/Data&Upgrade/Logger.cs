@@ -22,9 +22,9 @@ public class Logger : MonoBehaviour
     {
         if (soDataHolder != null)
         {
-            Debug.Log("valueB: " + soDataHolder.dataHolder.valueB);
+            Debug.Log("valueB: " + soDataHolder.dataHolder.valueX);
         }
-        float test2=test*soDataHolder.dataHolder.valueB;
+        float test2=test*soDataHolder.dataHolder.valueX;
         Debug.Log(test2);
     }
 }
