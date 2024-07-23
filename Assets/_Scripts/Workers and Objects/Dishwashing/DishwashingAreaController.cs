@@ -7,9 +7,10 @@ public class DishwashingAreaController : MonoBehaviour
     [Header("Settings")]
     [SerializeField] private float _initialWashingTime;
     [SerializeField] private float _initialMovementSpeed;
-    [SerializeField] private int _maxWorketAmount = 6;
+    [SerializeField] private int _maxWorkerAmount = 6;
 
     [Header("References")]
+    [SerializeField] private BetweenAreasController _betweenAreasController;
     [SerializeField] private Transform _idlePosition;
     [SerializeField] private GameObject _dishwashingMachine;
     [SerializeField] private GameObject _dishwashingWorker;
@@ -39,11 +40,11 @@ public class DishwashingAreaController : MonoBehaviour
     [ContextMenu("Spawn Worker")]
     public void SpawnWashingWorker()
     {
-        if (_washingWorkers.Count == _maxWorketAmount)
+        if (_washingWorkers.Count == _maxWorkerAmount)
             return;
         DishwashingWorker worker = Instantiate(_dishwashingWorker, _workerSpawnLocation).GetComponent<DishwashingWorker>();
         _washingWorkers.Add(worker);
-        worker.Init(this, _initialWashingTime, _initialMovementSpeed, _idlePosition.position);
+        worker.Init(this, _initialWashingTime, _initialMovementSpeed, _idlePosition.position, _betweenAreasController);
     }
 
     public bool TryGetAvailableDishwashingMachine(out DishwashingMachine machine)
@@ -84,5 +85,16 @@ public class DishwashingAreaController : MonoBehaviour
 
         worker = null;
         return false;
+    }
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.black;
+        foreach (Transform tr in _dishwashingMachineLocations)
+            Gizmos.DrawSphere(tr.position, 0.5f);
+
+
+        Gizmos.color = Color.red;
+        Gizmos.DrawSphere(_idlePosition.position, 0.5f);
     }
 }

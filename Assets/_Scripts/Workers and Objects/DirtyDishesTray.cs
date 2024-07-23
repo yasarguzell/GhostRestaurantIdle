@@ -4,14 +4,12 @@ using UnityEngine;
 
 public class DirtyDishesTray : MonoBehaviour
 {
-    public CleanDishesTray CleanDishesTray;
+    public bool IsInUse = false;
     public DishwashingAreaController _areaController;
 
     [ContextMenu("Add dirty dish")]
     public void AddDirtyDish()
     {
-        // add to there visually
-
         StartCoroutine("ManageDirtyDish");
     }
 
@@ -21,7 +19,7 @@ public class DirtyDishesTray : MonoBehaviour
         DishwashingWorker worker;
         while (!_areaController.TryGetAvailableWorker(out worker))
             yield return new WaitForSeconds(1f);
-
-        worker.StartMission(transform.position, CleanDishesTray.transform.position);
+        
+        worker.StartMission(transform.position, this);
     }
 }
