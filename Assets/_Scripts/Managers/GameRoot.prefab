@@ -136,10 +136,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 28323d1b4af9a064181683912f0f8b6b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pausePanel: {fileID: 0}
-  loungePanel: {fileID: 0}
-  kitchenPanel: {fileID: 0}
-  washingPanel: {fileID: 0}
+  upgradePanels:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  upgradeButtons:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
 --- !u!114 &5256569412681034105
 MonoBehaviour:
   m_ObjectHideFlags: 0

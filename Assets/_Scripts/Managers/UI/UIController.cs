@@ -1,104 +1,56 @@
-using System;
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public class UIController : MonoBehaviour
 {
-    [SerializeField] GameObject pausePanel;
-    [SerializeField] GameObject loungePanel;
-    [SerializeField] GameObject kitchenPanel;
-    [SerializeField] GameObject washingPanel;
+ 
+    public List<GameObject> upgradePanels=new List<GameObject>();
+    public List<GameObject> upgradeButtons=new List<GameObject>();
 
 
-
-    void OnEnable()
+    void Start()
     {
-        Subscribe();
-    }
-    void OnDisable()
-    {
-        UnSubscribe();
+        CoreUISignals.Instance.onOpenPanels+=onOpenPanel;
+        CoreUISignals.Instance.onClosePanels+=onClosePanel;
+        CoreUISignals.Instance.onRoomUIIndex+=onRoomUIIndex;
     }
 
-    void Subscribe()
-    {
-        CoreUISignals.Instance.onOpenPausePanel += OnOpenPausePanel;
-        CoreUISignals.Instance.onClosePausePanel += OnClosePausePanel;
-        CoreUISignals.Instance.onOpenLoungePanel += OnOpenLoungePanel;
-        CoreUISignals.Instance.onCloseLoungePanel += OnCloseLoungePanel;
-        CoreUISignals.Instance.onOpenKitchenPanel += OnOpenKitchenPanel;
-        CoreUISignals.Instance.onCloseKitchenPanel += OnCloseKitchenPanel;
-        CoreUISignals.Instance.onOpenWashingPanel += OnOpenWashingPanel;
-        CoreUISignals.Instance.onCloseWashingPanel += OnCloseWashingPanel;
-        CoreUISignals.Instance.onRoomUIIndex += OnRoomUIIndex;
-    }
-
-    private void OnRoomUIIndex(int arg0)
+    private void onRoomUIIndex(int arg0)
     {
         switch (arg0)
         {
             case 0:
-                OnCloseKitchenPanel();
-                OnCloseWashingPanel();
-                OnOpenLoungePanel();
+               
+                upgradeButtons[0].SetActive(true); // 0=lounge 1=kitchen 2=washing
+                upgradeButtons[1].SetActive(false);
+                upgradeButtons[2].SetActive(false);
+                
                 break;
             case 1:
-                OnCloseLoungePanel();
-                OnCloseWashingPanel();
-                OnOpenKitchenPanel();
+                
+                upgradeButtons[0].SetActive(false);
+                upgradeButtons[1].SetActive(true);
+                upgradeButtons[2].SetActive(false);
+                
                 break;
             case 2:
-                OnCloseKitchenPanel();
-                OnCloseLoungePanel();
-                OnOpenWashingPanel();
+
+                upgradeButtons[0].SetActive(false);
+                upgradeButtons[1].SetActive(false);
+                upgradeButtons[2].SetActive(true);
                 break;
         }
     }
 
-    private void OnCloseWashingPanel()
+    private void onClosePanel(int arg0)
     {
-        washingPanel.SetActive(false);
+        
+        upgradePanels[arg0].SetActive(false);
     }
 
-    private void OnOpenWashingPanel()
+    private void onOpenPanel(int arg0)
     {
-        washingPanel.SetActive(true);
-    }
-
-    private void OnCloseKitchenPanel()
-    {
-        kitchenPanel.SetActive(false);
-    }
-
-    private void OnOpenKitchenPanel()
-    {
-        kitchenPanel.SetActive(true);
-    }
-
-    private void OnCloseLoungePanel()
-    {
-        loungePanel.SetActive(false);
-    }
-
-    private void OnOpenLoungePanel()
-    {
-        loungePanel.SetActive(true);
-    }
-
-    private void OnClosePausePanel()
-    {
-        pausePanel.SetActive(false);
-    }
-
-    private void OnOpenPausePanel()
-    {
-        pausePanel.SetActive(true);
-    }
-
-    void UnSubscribe()
-    {
-        CoreUISignals.Instance.onOpenPausePanel -= OnOpenPausePanel;
-        CoreUISignals.Instance.onClosePausePanel -= OnClosePausePanel;
+       upgradePanels[arg0].SetActive(true);
     }
 }
