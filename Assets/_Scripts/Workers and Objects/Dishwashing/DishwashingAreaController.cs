@@ -18,8 +18,8 @@ public class DishwashingAreaController : MonoBehaviour
     [SerializeField] private Transform _workerSpawnLocation;
 
     // Spawned objects
-    public List<DishwashingMachine> _dishwashingMachines;
-    public List<DishwashingWorker> _washingWorkers;
+    private List<DishwashingMachine> _dishwashingMachines;
+    private List<DishwashingWorker> _washingWorkers;
 
 
     private void Awake()
@@ -35,6 +35,7 @@ public class DishwashingAreaController : MonoBehaviour
             return;
         var machine = Instantiate(_dishwashingMachine, _dishwashingMachineLocations[_dishwashingMachines.Count]).GetComponent<DishwashingMachine>();
         _dishwashingMachines.Add(machine);
+        NavMeshSurfaceController.Instance.UpdateNavMesh();
     }
 
     [ContextMenu("Spawn Worker")]

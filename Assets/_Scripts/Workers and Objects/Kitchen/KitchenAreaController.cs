@@ -18,8 +18,8 @@ public class KitchenAreaController : MonoBehaviour
     [SerializeField] private Transform _workerSpawnLocation;
 
     // Spawned objects
-    public List<Cooktop> _cooktops;
-    public List<CookWorker> _cookWorkers;
+    private List<Cooktop> _cooktops;
+    private List<CookWorker> _cookWorkers;
 
 
     private void Awake()
@@ -29,16 +29,17 @@ public class KitchenAreaController : MonoBehaviour
     }
 
     [ContextMenu("Spawn Cooktop")]
-    public void SpawnDishwashingMachine()
+    public void SpawnCooktop()
     {
         if (_cooktops.Count == _cooktopLocations.Length)
             return;
         var cooktop = Instantiate(_cooktop, _cooktopLocations[_cooktops.Count]).GetComponent<Cooktop>();
         _cooktops.Add(cooktop);
+        NavMeshSurfaceController.Instance.UpdateNavMesh();
     }
 
     [ContextMenu("Spawn Worker")]
-    public void SpawnWashingWorker()
+    public void SpawnCookWorker()
     {
         if (_cookWorkers.Count == _maxWorkerAmount)
             return;

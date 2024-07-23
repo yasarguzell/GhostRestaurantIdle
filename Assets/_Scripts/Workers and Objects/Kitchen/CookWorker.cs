@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 using UnityEngine.UI;
 using DG.Tweening;
 
@@ -14,9 +15,12 @@ public class CookWorker : MonoBehaviour
     [SerializeField] private float _cookingTime;
     [SerializeField] private float _movementSpeed;
     private Vector3 _idlePosition;
+    private NavMeshAgent _navMeshAgent;
+
 
     private void Awake()
     {
+        _navMeshAgent = GetComponent<NavMeshAgent>();
         TimerImage.fillAmount = 0;
         WorkerState = WorkerState.idle;
     }
@@ -50,9 +54,6 @@ public class CookWorker : MonoBehaviour
         // Free tray
         cleanDishesTray.IsInUse = false;
 
-        // Move to idle position
-        yield return StartCoroutine(MoveToPosition(_idlePosition));
-
         // Find cooktop
         Cooktop cooktop = null;
         yield return StartCoroutine(FindCooktopCoroutine((foundMachine) => cooktop = foundMachine));
@@ -66,7 +67,7 @@ public class CookWorker : MonoBehaviour
         // Free cooktop
         cooktop.IsInUse = false;
 
-        // Find clean tray
+        // Find ready food tray
         ReadyFoodTray tray = null;
         yield return StartCoroutine(FindReadyFoodTrayCoroutine((foundTray) => tray = foundTray));
 
@@ -76,6 +77,17 @@ public class CookWorker : MonoBehaviour
         // Drop food!!!!!!!!!!!!
 
         WorkerState = WorkerState.idle;
+        yield return StartCoroutine(MoveToPosition(_idlePosition));
+    }
+
+    private IEnumerator MoveToPosition(Vector3 targetPosition)
+    {
+        _navMeshAgent.SetDestination(targetPosition);
+
+        while (_navMeshAgent.pathPending || _navMeshAgent.remainingDistance > _navMeshAgent.stoppingDistance)
+        {
+            yield return null;
+        }
     }
 
     private IEnumerator Cook()
@@ -112,9 +124,6 @@ public class CookWorker : MonoBehaviour
         callback(cooktop);
     }
 
-    private IEnumerator MoveToPosition(Vector3 targetPosition)
-    {
-        yield return transform.DOMove(targetPosition, _movementSpeed).WaitForCompletion();
-    }
+
 
 }

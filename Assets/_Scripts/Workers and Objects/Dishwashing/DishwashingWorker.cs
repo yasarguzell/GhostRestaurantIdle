@@ -2,8 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.UI;
 using UnityEngine;
+using UnityEngine.AI;
 using DG.Tweening;
-using Unity.VisualScripting;
 
 public class DishwashingWorker : MonoBehaviour
 {
@@ -15,9 +15,12 @@ public class DishwashingWorker : MonoBehaviour
     [SerializeField] private float _cleaningTime;
     [SerializeField] private float _movementSpeed;
     private Vector3 _idlePosition;
+    private NavMeshAgent _navMeshAgent;
+
 
     private void Awake()
     {
+        _navMeshAgent = GetComponent<NavMeshAgent>();
         TimerImage.fillAmount = 0;
         WorkerState = WorkerState.idle;
     }
@@ -58,9 +61,6 @@ public class DishwashingWorker : MonoBehaviour
         // Free tray
         dirtyDishesTray.IsInUse = false;
 
-        // Move to idle position
-        yield return StartCoroutine(MoveToPosition(_idlePosition));
-
         // Find dishwasher
         DishwashingMachine machine = null;
         yield return StartCoroutine(FindDishwasherCoroutine((foundMachine) => machine = foundMachine));
@@ -84,11 +84,17 @@ public class DishwashingWorker : MonoBehaviour
         // Drop dish!!!!!!!!!!!!
         tray.AddCleanDish();
         WorkerState = WorkerState.idle;
+        yield return StartCoroutine(MoveToPosition(_idlePosition));
     }
 
     private IEnumerator MoveToPosition(Vector3 targetPosition)
     {
-        yield return transform.DOMove(targetPosition, _movementSpeed).WaitForCompletion();
+        _navMeshAgent.SetDestination(targetPosition);
+
+        while (_navMeshAgent.pathPending || _navMeshAgent.remainingDistance > _navMeshAgent.stoppingDistance)
+        {
+            yield return null;
+        }
     }
 
     private IEnumerator FindDishwasherCoroutine(System.Action<DishwashingMachine> callback)
