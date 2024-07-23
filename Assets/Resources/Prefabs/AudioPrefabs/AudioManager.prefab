@@ -77,4 +77,12 @@ MonoBehaviour:
     isLooping: 0
     audioSourceTransform: {fileID: 0}
     audioSource: {fileID: 0}
+  - name: Win
+    audioClip: {fileID: 8300000, guid: 53675676633c6c243812f2995971d5b8, type: 3}
+    volume: 0.5
+    pitch: 1
+    pitchRandomness: 0
+    isLooping: 0
+    audioSourceTransform: {fileID: 0}
+    audioSource: {fileID: 0}
   audioSourcePrefab: {fileID: 2198678260740374931, guid: a5df8293e26e77d49bc1de0b25006e7d, type: 3}

@@ -45,6 +45,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   vFX_ElementList:
-  - name: SoftHit
-    vFX_Prefab: {fileID: 0}
+  - name: SoftWave
+    vFX_Prefab: {fileID: 6532625474870085666, guid: 75f6e3060c6be6749899fa832be4a15b, type: 3}
+    destroyDelay: 1
+  - name: UnlockRoom
+    vFX_Prefab: {fileID: 8846737274113074932, guid: a8208d5e4b6746c4ba35468246d113e8, type: 3}
+    destroyDelay: 2
+  - name: WaterSplash
+    vFX_Prefab: {fileID: 83557698195126688, guid: 8c7dd978d6ed80940ad2a9f24f89a4f3, type: 3}
+    destroyDelay: 1
+  - name: Confetti
+    vFX_Prefab: {fileID: 4938095755617958528, guid: 11bb2ffc80ab1f04c9a335e85ca8c2f1, type: 3}
+    destroyDelay: 1
+  - name: Confetti
+    vFX_Prefab: {fileID: 4938095755617958528, guid: 11bb2ffc80ab1f04c9a335e85ca8c2f1, type: 3}
     destroyDelay: 1
