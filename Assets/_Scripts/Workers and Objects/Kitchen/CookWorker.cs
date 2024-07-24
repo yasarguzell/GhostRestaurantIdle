@@ -25,9 +25,9 @@ public class CookWorker : MonoBehaviour
         WorkerState = WorkerState.idle;
     }
 
-    public void Init(KitchenAreaController areaController, float cleaningTime, float movementSpeed, Vector3 idlePosition, BetweenAreasController betweenAreasController)
+    public void Init(KitchenAreaController areaController, float cookingTime, float movementSpeed, Vector3 idlePosition, BetweenAreasController betweenAreasController)
     {
-        _cookingTime = cleaningTime;
+        _cookingTime = cookingTime;
         _movementSpeed = movementSpeed;
         _areaController = areaController;
         _idlePosition = idlePosition;
@@ -123,7 +123,4 @@ public class CookWorker : MonoBehaviour
         }
         callback(cooktop);
     }
-
-
-
 }

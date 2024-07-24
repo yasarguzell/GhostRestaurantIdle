@@ -5,4 +5,5 @@ using UnityEngine;
 public class ReadyFoodTray : MonoBehaviour
 {
     public bool IsInUse = false;
+    public bool IsSelectedByWorker = false;
 }

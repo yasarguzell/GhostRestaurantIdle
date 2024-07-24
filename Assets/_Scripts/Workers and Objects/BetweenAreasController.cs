@@ -8,6 +8,7 @@ public class BetweenAreasController : MonoBehaviour
     [SerializeField] private List<DirtyDishesTray> _dirtyDishesTrays;
     [SerializeField] private List<CleanDishesTray> _cleanDishesTrays;
     [SerializeField] private List<ReadyFoodTray> _readyFoodTrays;
+    public DirtyDishDropTray _dirtyDishDropTray;
 
     public bool TryGetAvailableDirtyDishTray(out DirtyDishesTray tray)
     {
@@ -61,6 +62,22 @@ public class BetweenAreasController : MonoBehaviour
                 _readyFoodTrays.RemoveAt(i);
                 _readyFoodTrays.Add(tray);
 
+                return true;
+            }
+        }
+
+        tray = null;
+        return false;
+    }
+
+    public bool TryGetReadyFood(out ReadyFoodTray tray)
+    {
+        for (int i = 0; i < _readyFoodTrays.Count; i++)
+        {
+            if (_readyFoodTrays[i].IsInUse && !_readyFoodTrays[i].IsSelectedByWorker)
+            {
+                tray = _readyFoodTrays[i];
+                _readyFoodTrays[i].IsSelectedByWorker = true;
                 return true;
             }
         }
