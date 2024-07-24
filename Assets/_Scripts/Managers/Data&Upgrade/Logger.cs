@@ -5,6 +5,7 @@ using UnityEngine;
 public class Logger : MonoBehaviour
 {
     // npc player vb controllerı
+    [SerializeField] MoneyManagement moneyManagement;
     SODataHolder soDataHolder;
     float test=5;
 
@@ -22,9 +23,18 @@ public class Logger : MonoBehaviour
     {
         if (soDataHolder != null)
         {
-            Debug.Log("valueB: " + soDataHolder.dataHolder.valueX);
+            Debug.Log("valueX: " + soDataHolder.dataHolder.valueX);
+            Debug.Log("valueY: " + soDataHolder.dataHolder.valueY);
+            Debug.Log("valueZ: " + soDataHolder.dataHolder.valueZ);
+            Debug.Log("valueA: " + soDataHolder.dataHolder.valueA);
+            Debug.Log("valueB: " + soDataHolder.dataHolder.valueB);
         }
         float test2=test*soDataHolder.dataHolder.valueX;
         Debug.Log(test2);
+    }
+
+    public void EarnTestMoney()
+    {
+        moneyManagement.UpdateBooCoin(150);
     }
 }

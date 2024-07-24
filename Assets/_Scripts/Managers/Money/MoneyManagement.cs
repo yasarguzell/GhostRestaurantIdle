@@ -14,6 +14,11 @@ public class MoneyManagement : MonoBehaviour
         moneyDataObj = Resources.Load<SOMoneyData>("Datas/MoneyData");
         booCoinCountText.text = FormatMoney(moneyDataObj.moneyData.booCoin);
     }
+    void Update()
+    {
+        booCoinCountText.text = FormatMoney(moneyDataObj.moneyData.booCoin);
+       
+    }
 
     public void UpdateBooCoin(int amount)
     {

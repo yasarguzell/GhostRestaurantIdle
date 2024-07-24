@@ -7,17 +7,19 @@ public class DataManager : MonoBehaviour
 {
     // update ref update manager
     SODataHolder soDataHolder;
+    SOMoneyData soMoneyData;
 
 
     void Awake()
     {
         soDataHolder = GetDataHolder();
+        
     }
     private SODataHolder GetDataHolder()
     {
-
         return Resources.Load<SODataHolder>("Datas/SODataHolder");
     }
+   
     void OnEnable()
     {
         Subscribe();
@@ -48,7 +50,7 @@ public class DataManager : MonoBehaviour
 
     private void onGetDataB(float value)
     {
-        soDataHolder.dataHolder.valueB += value;
+        soDataHolder.dataHolder.valueB += value;        
     }
 
     private void onGetDataA(float value)

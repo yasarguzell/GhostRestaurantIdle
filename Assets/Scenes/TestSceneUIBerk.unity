@@ -122,6 +122,28 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!114 &50759928 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2882287888573403796, guid: 9a0bc071413779f408e34cafb149b2c8, type: 3}
+  m_PrefabInstance: {fileID: 957485999661825616}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &508351830 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8383414711603785778, guid: 9a0bc071413779f408e34cafb149b2c8, type: 3}
+  m_PrefabInstance: {fileID: 957485999661825616}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &693115932
 GameObject:
   m_ObjectHideFlags: 0
@@ -562,9 +584,45 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7309807205689458259, guid: aed0ccb6c9336be4e8b83dbc98ed409a, type: 3}
-      propertyPath: upgradePanels.Array.size
-      value: 4
-      objectReference: {fileID: 0}
+      propertyPath: costTexts.Array.data[0]
+      value: 
+      objectReference: {fileID: 1260780937}
+    - target: {fileID: 7309807205689458259, guid: aed0ccb6c9336be4e8b83dbc98ed409a, type: 3}
+      propertyPath: costTexts.Array.data[1]
+      value: 
+      objectReference: {fileID: 1333174112}
+    - target: {fileID: 7309807205689458259, guid: aed0ccb6c9336be4e8b83dbc98ed409a, type: 3}
+      propertyPath: costTexts.Array.data[2]
+      value: 
+      objectReference: {fileID: 1504374809}
+    - target: {fileID: 7309807205689458259, guid: aed0ccb6c9336be4e8b83dbc98ed409a, type: 3}
+      propertyPath: costTexts.Array.data[3]
+      value: 
+      objectReference: {fileID: 1340070731}
+    - target: {fileID: 7309807205689458259, guid: aed0ccb6c9336be4e8b83dbc98ed409a, type: 3}
+      propertyPath: costTexts.Array.data[4]
+      value: 
+      objectReference: {fileID: 508351830}
+    - target: {fileID: 7309807205689458259, guid: aed0ccb6c9336be4e8b83dbc98ed409a, type: 3}
+      propertyPath: buttonTexts.Array.data[0]
+      value: 
+      objectReference: {fileID: 1260780937}
+    - target: {fileID: 7309807205689458259, guid: aed0ccb6c9336be4e8b83dbc98ed409a, type: 3}
+      propertyPath: buttonTexts.Array.data[1]
+      value: 
+      objectReference: {fileID: 1333174112}
+    - target: {fileID: 7309807205689458259, guid: aed0ccb6c9336be4e8b83dbc98ed409a, type: 3}
+      propertyPath: buttonTexts.Array.data[2]
+      value: 
+      objectReference: {fileID: 1504374809}
+    - target: {fileID: 7309807205689458259, guid: aed0ccb6c9336be4e8b83dbc98ed409a, type: 3}
+      propertyPath: buttonTexts.Array.data[3]
+      value: 
+      objectReference: {fileID: 1340070731}
+    - target: {fileID: 7309807205689458259, guid: aed0ccb6c9336be4e8b83dbc98ed409a, type: 3}
+      propertyPath: buttonTexts.Array.data[4]
+      value: 
+      objectReference: {fileID: 508351830}
     - target: {fileID: 7309807205689458259, guid: aed0ccb6c9336be4e8b83dbc98ed409a, type: 3}
       propertyPath: upgradePanels.Array.data[0]
       value: 
@@ -598,6 +656,120 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: aed0ccb6c9336be4e8b83dbc98ed409a, type: 3}
+--- !u!1 &1237458383
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1237458385}
+  - component: {fileID: 1237458384}
+  - component: {fileID: 1237458386}
+  m_Layer: 0
+  m_Name: GameObject
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1237458384
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1237458383}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1fe9f3bf4bd409647b94d066c6d26494, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moneyManagement: {fileID: 1237458386}
+--- !u!4 &1237458385
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1237458383}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 540, y: 721.5, z: -0.0000137235365}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1237458386
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1237458383}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f18af88c6aa8c35408aebe723fb936e7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  booCoinCountText: {fileID: 50759928}
+--- !u!114 &1260780937 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6672632142251805207, guid: 9a0bc071413779f408e34cafb149b2c8, type: 3}
+  m_PrefabInstance: {fileID: 957485999661825616}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1333174112 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3040092539165879567, guid: 9a0bc071413779f408e34cafb149b2c8, type: 3}
+  m_PrefabInstance: {fileID: 957485999661825616}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1340070731 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 74194942070057704, guid: 9a0bc071413779f408e34cafb149b2c8, type: 3}
+  m_PrefabInstance: {fileID: 957485999661825616}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1382374302 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4536653908895792091, guid: aed0ccb6c9336be4e8b83dbc98ed409a, type: 3}
+  m_PrefabInstance: {fileID: 1073882116}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe2da64114b02f2479567c32636e5613, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1504374809 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5661243754489697563, guid: 9a0bc071413779f408e34cafb149b2c8, type: 3}
+  m_PrefabInstance: {fileID: 957485999661825616}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1781033133
 GameObject:
   m_ObjectHideFlags: 0
@@ -912,10 +1084,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 834854037970398929, guid: 9a0bc071413779f408e34cafb149b2c8, type: 3}
-      propertyPath: m_Name
-      value: WashingUpgradePanelButton
-      objectReference: {fileID: 0}
+    - target: {fileID: 31566674101555390, guid: 9a0bc071413779f408e34cafb149b2c8, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1382374302}
+    - target: {fileID: 491261910296101476, guid: 9a0bc071413779f408e34cafb149b2c8, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1382374302}
     - target: {fileID: 895080562314674749, guid: 9a0bc071413779f408e34cafb149b2c8, type: 3}
       propertyPath: m_Name
       value: MainCanvas
@@ -1000,6 +1176,22 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4616934065697064899, guid: 9a0bc071413779f408e34cafb149b2c8, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1382374302}
+    - target: {fileID: 5052961708606199323, guid: 9a0bc071413779f408e34cafb149b2c8, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1382374302}
+    - target: {fileID: 6082279827656224439, guid: 9a0bc071413779f408e34cafb149b2c8, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1237458384}
+    - target: {fileID: 9003671316540140687, guid: 9a0bc071413779f408e34cafb149b2c8, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1382374302}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1050,6 +1242,7 @@ SceneRoots:
   - {fileID: 693115936}
   - {fileID: 2128535494}
   - {fileID: 2028724008}
+  - {fileID: 790414681}
   - {fileID: 957485999661825616}
   - {fileID: 1073882116}
-  - {fileID: 790414681}
+  - {fileID: 1237458385}

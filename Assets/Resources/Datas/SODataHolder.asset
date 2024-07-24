@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: SODataHolder
   m_EditorClassIdentifier: 
   dataHolder:
-    valueX: 0
+    valueX: 495
     valueY: 0
     valueZ: 0
-    valueA: 0
-    valueB: 105
+    valueA: 1600
+    valueB: 2940
