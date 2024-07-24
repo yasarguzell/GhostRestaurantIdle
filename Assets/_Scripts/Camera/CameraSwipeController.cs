@@ -7,6 +7,7 @@ public class CameraSwipeController : MonoBehaviour
     public float size = 12f;
     private Vector2 startTouchPosition, endTouchPosition;
     private bool isDragging = false;
+    private bool isPanelOn = false;
     private int mapIndex = 0;
 
     private void Start()
@@ -14,14 +15,25 @@ public class CameraSwipeController : MonoBehaviour
         mapIndex = 0;
         float aspectRatio = (float)Screen.width / (float)Screen.height;
         Camera.main.orthographicSize = size / (2.0f * aspectRatio);
+        CoreUISignals.Instance.isPanelOpen+=IsPanelOpen;
+        isPanelOn = false;
         //Camera.main.aspect = (float)Screen.width / (float)Screen.height;
+    }
+
+    private void IsPanelOpen(bool arg0)
+    {
+        if (arg0)
+        {
+            isPanelOn = true;
+        }
+        else { isPanelOn = false; }
     }
 
     void Update()
     {
         //float aspectRatio = (float)Screen.width / (float)Screen.height;
         //Camera.main.orthographicSize = cameraSpeed / (2.0f * aspectRatio);
-        if (Input.GetMouseButtonDown(0))
+        /*if (Input.GetMouseButtonDown(0))
         {
             startTouchPosition = Input.mousePosition;
             isDragging = true;
@@ -37,14 +49,12 @@ public class CameraSwipeController : MonoBehaviour
                 MoveCameraLeft();
                 mapIndex--;
                 CoreUISignals.Instance.onRoomUIIndex(mapIndex);
-                //event(index)
             }
-            else if (Mathf.Abs(swipeDelta.x) > Mathf.Abs(swipeDelta.y) && swipeDelta.x < 0 && mapIndex < 2/*maps.Count*/)
+            else if (Mathf.Abs(swipeDelta.x) > Mathf.Abs(swipeDelta.y) && swipeDelta.x < 0 && mapIndex < 2)//maps.Count
             {
                 MoveCameraRight();
                 mapIndex++;
                 CoreUISignals.Instance.onRoomUIIndex(mapIndex);
-                //event(index)
             }
             else if (Mathf.Abs(swipeDelta.x) < Mathf.Abs(swipeDelta.y) && swipeDelta.y < 0)
             {
@@ -57,8 +67,8 @@ public class CameraSwipeController : MonoBehaviour
 
 
             isDragging = false;
-        }
-        /*if (Input.touchCount > 0)
+        }*/
+        if (Input.touchCount > 0)
         {
             Touch touch = Input.GetTouch(0);
 
@@ -68,19 +78,34 @@ public class CameraSwipeController : MonoBehaviour
                 isDragging = true;
             }
 
-            if (touch.phase == TouchPhase.Ended && isDragging)
+            if (touch.phase == TouchPhase.Ended && isDragging && !isPanelOn)
             {
                 endTouchPosition = touch.position;
                 Vector2 swipeDelta = endTouchPosition - startTouchPosition;
 
-                if (Mathf.Abs(swipeDelta.x) > Mathf.Abs(swipeDelta.y) && swipeDelta.x > 0)
+                if (Mathf.Abs(swipeDelta.x) > Mathf.Abs(swipeDelta.y) && swipeDelta.x > 0 && mapIndex > 0)
+                {
+                    MoveCameraLeft();
+                    mapIndex--;
+                    CoreUISignals.Instance.onRoomUIIndex(mapIndex);
+                }
+                else if (Mathf.Abs(swipeDelta.x) > Mathf.Abs(swipeDelta.y) && swipeDelta.x < 0 && mapIndex < 2)//maps.Count
                 {
                     MoveCameraRight();
+                    mapIndex++;
+                    CoreUISignals.Instance.onRoomUIIndex(mapIndex);
                 }
-
+                else if (Mathf.Abs(swipeDelta.x) < Mathf.Abs(swipeDelta.y) && swipeDelta.y < 0)
+                {
+                    MoveCameraUp();
+                }
+                else if (Mathf.Abs(swipeDelta.x) < Mathf.Abs(swipeDelta.y) && swipeDelta.y > 0)
+                {
+                    MoveCameraDown();
+                }
                 isDragging = false;
             }
-        }*/
+        }
     }
 
     void MoveCameraRight()

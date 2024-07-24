@@ -6,6 +6,7 @@ public class CoreUISignals : MonoBehaviour
     public UnityAction<int> onOpenPanels = delegate { };
     public UnityAction<int> onClosePanels = delegate { };
     public UnityAction<int> onRoomUIIndex = delegate { };
+    public UnityAction<bool> isPanelOpen = delegate { };
     public static CoreUISignals Instance { get; set; }
     void Awake()
     {

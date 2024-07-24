@@ -6,10 +6,12 @@ public class UIManager : MonoBehaviour
     public void OpenPausePanel()
     {
         CoreUISignals.Instance.onOpenPanels?.Invoke(0);
+        CoreUISignals.Instance.isPanelOpen(true);
     }
     public void ClosePausePanel()
     {
         CoreUISignals.Instance.onClosePanels?.Invoke(0);
+        CoreUISignals.Instance.isPanelOpen(false);
     }
 
     public void OpenUpgradeLoungePanel()
