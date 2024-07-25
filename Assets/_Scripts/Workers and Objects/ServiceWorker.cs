@@ -15,6 +15,7 @@ public class ServiceWorker : MonoBehaviour
     [SerializeField] private float _movementSpeed;
     private Vector3 _idlePosition;
     private NavMeshAgent _navMeshAgent;
+    private Coroutine _moveToIdleCoroutine;
 
 
     private void Awake()
@@ -34,16 +35,16 @@ public class ServiceWorker : MonoBehaviour
 
     public IEnumerator GetFoodCoroutine(Vector3 customerPosition, Customer customer)
     {
+        if (_moveToIdleCoroutine != null)
+            StopCoroutine(_moveToIdleCoroutine);
         // find tray with food
         ReadyFoodTray tray = null;
         Debug.Log("Bieinci");
         while (!_betweenAreasController.TryGetReadyFood(out tray))
         {
             customer.RestartOrder();
-
             WorkerState = WorkerState.idle;
-            StopAllCoroutines();
-            yield return null;
+            yield break;
         }
 
         //yield return StartCoroutine(FindReadyFoodCoroutine((foundTray) => tray = foundTray));
@@ -59,15 +60,23 @@ public class ServiceWorker : MonoBehaviour
         yield return StartCoroutine(MoveToPosition(customerPosition));
 
         Debug.Log("ucunucu");
-        yield return StartCoroutine(MoveToPosition(_idlePosition));
+        //yield return StartCoroutine(MoveToPosition(_idlePosition));
         // drop food
         Debug.Log("dort");
+        _moveToIdleCoroutine = StartCoroutine("MoveToIdlePos");
         WorkerState = WorkerState.idle;
 
     }
 
+    private IEnumerator MoveToIdlePos()
+    {
+        yield return StartCoroutine(MoveToPosition(_idlePosition));
+    }
+
     public IEnumerator ReturnDirtyDishCoroutine(Vector3 seatPosition, Table table, int seatIndex)
     {
+        if (_moveToIdleCoroutine != null)
+            StopCoroutine(_moveToIdleCoroutine);
         // Move to seat
         yield return StartCoroutine(MoveToPosition(seatPosition));
 
@@ -78,6 +87,7 @@ public class ServiceWorker : MonoBehaviour
         // drop the dish
         yield return StartCoroutine(MoveToPosition(_betweenAreasController._dirtyDishDropTray.transform.position));
         _betweenAreasController._dirtyDishDropTray.MoveDirtyDish();
+        _moveToIdleCoroutine = StartCoroutine("MoveToIdlePos");
         WorkerState = WorkerState.idle;
 
     }
