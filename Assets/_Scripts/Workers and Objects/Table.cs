@@ -6,22 +6,23 @@ using UnityEngine.UIElements;
 
 public class Table : MonoBehaviour
 {
-    private int _seatAmount;
-    //[SerializeField] private Transform[] _seatPositions;
+    public int _seatAmount;
+    [SerializeField] private Transform[] _seatPositions;
     private ServiceAreaController _serviceAreaController;
     [SerializeField] private Transform _getOutPosition;
+    public GameObject _seat;
 
     public/**/   List<CustomerTableChair> chairs;
     public /**/ bool isThereFreeTable;
     private void Start()
     {
-
-        chairs = new List<CustomerTableChair>();
-        for (int i = 0; i < this.transform.childCount; i++)
-            if (this.transform.GetChild(i).TryGetComponent(out CustomerTableChair chair))
-                if (this.transform.GetChild(i).gameObject.activeSelf)
-                    chairs.Add(chair);
-
+        /*
+                chairs = new List<CustomerTableChair>();
+                for (int i = 0; i < this.transform.childCount; i++)
+                    if (this.transform.GetChild(i).TryGetComponent(out CustomerTableChair chair))
+                        if (this.transform.GetChild(i).gameObject.activeSelf)
+                            chairs.Add(chair);
+        */
         //int freeChairCount = 0;
         //foreach (var chair in chairs)
         //{
@@ -30,33 +31,32 @@ public class Table : MonoBehaviour
         //        freeChairCount++;
         //    }
         //}
+
+        /*
         _seatAmount = chairs.Count;
 
         Init(GameObject.FindAnyObjectByType<ServiceAreaController>(), _getOutPosition);
+        */
+
     }
     private void Update()
     {
         //if (Input.GetKeyDown(KeyCode.Space))
-            //if (CanThereAnyChair())
-            //    print("Masada Bo� yer var");
-            //else
-            //    print("Masada bos yer yok!!!!");
+        //if (CanThereAnyChair())
+        //    print("Masada Bo� yer var");
+        //else
+        //    print("Masada bos yer yok!!!!");
     }
 
 
 
-    public void Init(ServiceAreaController serviceAreaController, Transform getOutPosition)
+    public void Init(ServiceAreaController serviceAreaController, Transform getOutPosition, int initialSeatAmount)
     {
         _serviceAreaController = serviceAreaController;
-        //_getOutPosition = getOutPosition;
-        for (int i = 0; i < chairs.Count; i++)
+        _getOutPosition = getOutPosition;
+        for (int i = 0; i < initialSeatAmount; i++)
         {
-            //if (!chairs[i].isFull)
-            //{
-                GetCustomer(i);
-                //chairs[i].isFull = true;
-            //}
-
+            AddSeat();
         }
     }
     //private bool CanThereAnyChair()
@@ -79,20 +79,21 @@ public class Table : MonoBehaviour
             yield return new WaitForSeconds(1);
         }
 
-        worker.StartReturningDirtyDishMission(chairs[seatIndex].transform.position, this, seatIndex);
+        worker.StartReturningDirtyDishMission(_seatPositions[seatIndex].transform.position, this, seatIndex);
     }
 
     [ContextMenu("Add Seat")]
     public void AddSeat()
     {
-        if (chairs.Count == _seatAmount)
+        if (_seatAmount == _seatPositions.Length)
             return;
         _seatAmount++;
         GetCustomer(_seatAmount - 1);
+        Instantiate(_seat, _seatPositions[_seatAmount - 1]);
     }
 
     public void GetCustomer(int seatIndex)
     {
-        _serviceAreaController.SpawnCustomer(chairs[seatIndex].transform.position, this, seatIndex);
+        _serviceAreaController.SpawnCustomer(_seatPositions[seatIndex].transform.position, this, seatIndex);
     }
 }

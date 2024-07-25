@@ -44,7 +44,7 @@ public class ServiceAreaController : MonoBehaviour
         var table = Instantiate(_table, _tableLocations[_tables.Count]).GetComponent<Table>();
         _tables.Add(table);
         NavMeshSurfaceController.Instance.UpdateNavMesh();
-        table.Init(this, _getOutPosition/*, _initialSeatAmount*/);
+        table.Init(this, _getOutPosition, _initialSeatAmount);
     }
 
     [ContextMenu("Spawn Worker")]
