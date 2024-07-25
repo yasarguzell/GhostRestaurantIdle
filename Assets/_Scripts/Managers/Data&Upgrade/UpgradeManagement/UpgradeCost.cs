@@ -22,9 +22,9 @@ public class UpgradeCost : MonoBehaviour
     };
     public int CostWaitersUpgradeIndex = 0;
     public Dictionary<int, float> CostIncreaseTable = new(){
-        {0, 20},
-        {1, 40},
-        {2, 60},
+        {0, 200},
+        {1, 400},
+        {2, 600},
         {3, 80},
         {4, 100}
     };
@@ -36,6 +36,9 @@ public class UpgradeCost : MonoBehaviour
         {2, 300},
         {3, 400},
         {4, 500},
+        {5, 600},
+        {6, 700},
+        
     };
     public int CostUpgradeCMoveSpeedIndex = 0;
 

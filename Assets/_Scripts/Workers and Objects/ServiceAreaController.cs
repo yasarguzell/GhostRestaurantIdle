@@ -8,6 +8,7 @@ public class ServiceAreaController : MonoBehaviour
     [SerializeField] private float _initialMovementSpeed;
     [SerializeField] private int _maxWorkerAmount = 6;
     [SerializeField] private int _initialSeatAmount = 1;
+    
 
     [Header("Customer Settings")]
     [SerializeField] private GameObject _customer;
@@ -27,7 +28,7 @@ public class ServiceAreaController : MonoBehaviour
     SODataHolder sODataHolder;
 
     // Spawned objects
-    private List<Table> _tables;
+    public List<Table> _tables;
     private List<ServiceWorker> _serviceWorkers;
 
 
@@ -117,4 +118,13 @@ public class ServiceAreaController : MonoBehaviour
         Gizmos.color = Color.cyan;
         Gizmos.DrawSphere(_customerSpawnLocation.position, 0.5f);
     }
+    public void IncreaseSeatAmount()
+    {
+        foreach (Table table in _tables)
+        {
+            table.AddSeat();
+        }
+            _initialSeatAmount++;
+    }
+   
 }

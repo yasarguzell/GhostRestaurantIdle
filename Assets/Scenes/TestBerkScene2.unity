@@ -351,6 +351,7 @@ MonoBehaviour:
   - {fileID: 907240422}
   _workerSpawnLocation: {fileID: 807606653}
   _customerSpawnLocation: {fileID: 217073918}
+  _tables: []
 --- !u!114 &126448638 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 2060580863389392166, guid: 9a0bc071413779f408e34cafb149b2c8, type: 3}
@@ -1133,10 +1134,6 @@ PrefabInstance:
     - target: {fileID: 4984658493008940593, guid: 06e5d7e528ff7ac4db4eb66e5865813a, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7284503028597014676, guid: 06e5d7e528ff7ac4db4eb66e5865813a, type: 3}
-      propertyPath: _initialWashingTime
-      value: 5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -2911,10 +2908,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: GameRoot
       objectReference: {fileID: 0}
-    - target: {fileID: 3223657838914710636, guid: aed0ccb6c9336be4e8b83dbc98ed409a, type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 4523289996825984435, guid: aed0ccb6c9336be4e8b83dbc98ed409a, type: 3}
       propertyPath: booCoinCountText
       value: 
@@ -3527,10 +3520,6 @@ PrefabInstance:
     - target: {fileID: 895080562314674749, guid: 9a0bc071413779f408e34cafb149b2c8, type: 3}
       propertyPath: m_Name
       value: MainCanvas
-      objectReference: {fileID: 0}
-    - target: {fileID: 1833747242668387394, guid: 9a0bc071413779f408e34cafb149b2c8, type: 3}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2589726705392728051, guid: 9a0bc071413779f408e34cafb149b2c8, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target

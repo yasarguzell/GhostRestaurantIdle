@@ -261,6 +261,7 @@ MonoBehaviour:
   - {fileID: 9115918792380004702}
   _workerSpawnLocation: {fileID: 2647634293521006684}
   _customerSpawnLocation: {fileID: 2306530082287300639}
+  _tables: []
 --- !u!114 &3307925904260288216
 MonoBehaviour:
   m_ObjectHideFlags: 0

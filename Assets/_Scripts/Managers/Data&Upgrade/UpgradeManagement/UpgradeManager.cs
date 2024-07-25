@@ -262,22 +262,19 @@ public class UpgradeManager : MonoBehaviour
         if (!upgradeCost.CostIncreaseTable.ContainsKey(upgradeCost.CostIncreaseTableIndex)) return;
         costIncreaseTable = (long)upgradeCost.CostIncreaseTable[upgradeCost.CostIncreaseTableIndex];
 
-        if (soMoneyData.moneyData.booCoin >= costIncreaseTable)
+        if (soMoneyData.moneyData.booCoin >= costIncreaseTable && serviceAreaController._tables.Count > 0)
         {
-            if (upgradeTable.valueIncreaseTableIndex < upgradeTable.valueIncreaseTable.Count - 1)
+
+            soMoneyData.moneyData.booCoin -= costIncreaseTable;
+            serviceAreaController.IncreaseSeatAmount();
+            upgradeCost.CostIncreaseTableIndex++;
+            if (upgradeCost.CostIncreaseTable.ContainsKey(upgradeCost.CostIncreaseTableIndex))
             {
-                soMoneyData.moneyData.booCoin -= costIncreaseTable;
-                tableController.AddSeat();
-                upgradeCost.CostIncreaseTableIndex++;
                 CoreUISignals.Instance.onUpgradeCostText?.Invoke(2, (long)upgradeCost.CostIncreaseTable[upgradeCost.CostIncreaseTableIndex]);
-                if (tableController == null)
-                {
-                    Debug.Log("lounge da table yok");
-                }
             }
-            else
+
+            if (upgradeCost.CostIncreaseTableIndex == 2)
             {
-                Debug.Log("ValueA is at maximum level!");
                 CoreUISignals.Instance.onButtonTexts?.Invoke(2);
             }
         }
