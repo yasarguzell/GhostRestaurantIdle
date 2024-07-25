@@ -9,7 +9,7 @@ public class UpgradeCost : MonoBehaviour
         {2, 300},
         {3, 400},
         {4, 500},
-    
+
     };
     public int CostChefCookSpeedIndex = 0;
 
@@ -21,9 +21,6 @@ public class UpgradeCost : MonoBehaviour
         {4, 60}
     };
     public int CostWaitersUpgradeIndex = 0;
-
-   
-
     public Dictionary<int, float> CostIncreaseTable = new(){
         {0, 20},
         {1, 40},
@@ -47,7 +44,9 @@ public class UpgradeCost : MonoBehaviour
         {1, 70},
         {2, 105},
         {3, 140},
-        {4, 175}
+        {4, 175},
+        {5, 200},
+        {6, 250}
     };
     public int CostHiringWaitersIndex = 0;
     public Dictionary<int, float> CostHireChef = new(){
@@ -58,18 +57,15 @@ public class UpgradeCost : MonoBehaviour
         {4, 500},
         {5, 600},
         {6, 700}
-        
-
     };
     public int CostHireChefIndex = 0;
-     public Dictionary<int, float> CostValueUpgradeSpeedWashingWorker = new(){
+    public Dictionary<int, float> CostValueUpgradeSpeedWashingWorker = new(){
          {0, 35},
         {1, 70},
         {2, 105},
         {3, 140},
         {4, 175},
         {5, 200},
-        
 
     };
     public int CostValueUpgradeSpeedWashingWorkerIndex = 0;
@@ -80,22 +76,16 @@ public class UpgradeCost : MonoBehaviour
         {3, 140},
         {4, 175},
         {5, 200},
-        {6, 225}
-
     };
     public int CostValueUpgradeSpeedWashingDishWasherIndex = 0;
-     public Dictionary<int, float> CostUpgradeDishwasherRoom  = new(){
+    public Dictionary<int, float> CostUpgradeDishwasherRoom = new(){
         {0, 35},
         {1, 70},
         {2, 105},
         {3, 140},
         {4, 175},
         {5, 200},
-        {6, 225}
-       
-
-      
-
+        {6, 225},
     };
     public int CostUpgradeDishwasherRoomIndex = 0;
 }

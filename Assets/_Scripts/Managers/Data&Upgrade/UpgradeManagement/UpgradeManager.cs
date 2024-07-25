@@ -61,7 +61,7 @@ public class UpgradeManager : MonoBehaviour
     }
 
     #region  Upgrade Button Methods
-    public void UpgradeWaitersSpeed() // text list 0 yapıldı sorun yok
+    public void UpgradeWaitersSpeed()  // sorunsuz text list 0
     {
         if (!upgradeCost.CostWaitersUpgradeSpeed.ContainsKey(upgradeCost.CostWaitersUpgradeIndex)) return;
         costWaitersUpgradeSpeed = (long)upgradeCost.CostWaitersUpgradeSpeed[upgradeCost.CostWaitersUpgradeIndex];
@@ -73,12 +73,15 @@ public class UpgradeManager : MonoBehaviour
                 float upgradeValue = upgradeTable.valueWaitersUpgradeSpeed[++upgradeTable.IndexWaitersUpgradeSpeed];
                 CoreGameSignals.Instance.onDataUpgradeWaitersSpeed?.Invoke(upgradeValue);
                 upgradeCost.CostWaitersUpgradeIndex++;
-                CoreUISignals.Instance.onUpgradeCostText?.Invoke(0, (long)upgradeCost.CostWaitersUpgradeSpeed[upgradeCost.CostWaitersUpgradeIndex]);
-            }
-            else
-            {
-                Debug.Log("ValueZ is at maximum level!");
-                CoreUISignals.Instance.onButtonTexts?.Invoke(0);
+
+                if (upgradeCost.CostWaitersUpgradeIndex < upgradeCost.CostWaitersUpgradeSpeed.Count)
+                {
+                    CoreUISignals.Instance.onUpgradeCostText?.Invoke(0, (long)upgradeCost.CostWaitersUpgradeSpeed[upgradeCost.CostWaitersUpgradeIndex]);
+                }
+                if (upgradeTable.IndexWaitersUpgradeSpeed == upgradeTable.valueWaitersUpgradeSpeed.Count - 1)
+                {
+                    CoreUISignals.Instance.onButtonTexts?.Invoke(0);
+                }
             }
         }
         else
@@ -86,62 +89,65 @@ public class UpgradeManager : MonoBehaviour
             Debug.Log("Not enough BooCoins!");
         }
     }
-    public void UpgradeChefCookSpeed()  // textlist 3 sroun yok
+
+    public void UpgradeChefCookSpeed() // sorunsuz text list 3
     {
         if (!upgradeCost.CostChefCookSpeedUpgrade.ContainsKey(upgradeCost.CostChefCookSpeedIndex)) return;
         costChefUpgradeCookSpeed = (long)upgradeCost.CostChefCookSpeedUpgrade[upgradeCost.CostChefCookSpeedIndex];
         if (soMoneyData.moneyData.booCoin >= costChefUpgradeCookSpeed)
         {
-            if (upgradeTable.IndexChefCookSpeedUpgrade < upgradeTable.valueChefCookSpeedUpgrade.Count)
+            if (upgradeTable.IndexChefCookSpeedUpgrade < upgradeTable.valueChefCookSpeedUpgrade.Count - 1)
             {
                 soMoneyData.moneyData.booCoin -= costChefUpgradeCookSpeed;
                 float upgradeValue = upgradeTable.valueChefCookSpeedUpgrade[++upgradeTable.IndexChefCookSpeedUpgrade];
                 CoreGameSignals.Instance.onDataUpgradeChefCookSpeed?.Invoke(upgradeValue);
                 upgradeCost.CostChefCookSpeedIndex++;
-                CoreUISignals.Instance.onUpgradeCostText?.Invoke(3, (long)upgradeCost.CostChefCookSpeedUpgrade[upgradeCost.CostChefCookSpeedIndex]);
-            }
-            else
-            {
-                Debug.Log("ValueX is at maximum level!");
-                CoreUISignals.Instance.onButtonTexts?.Invoke(3);
+
+                if (upgradeCost.CostChefCookSpeedIndex < upgradeCost.CostChefCookSpeedUpgrade.Count)
+                {
+                    CoreUISignals.Instance.onUpgradeCostText?.Invoke(3, (long)upgradeCost.CostChefCookSpeedUpgrade[upgradeCost.CostChefCookSpeedIndex]);
+                }
+                if (upgradeTable.IndexChefCookSpeedUpgrade == upgradeTable.valueChefCookSpeedUpgrade.Count - 1)
+                {
+                    CoreUISignals.Instance.onButtonTexts?.Invoke(3);
+                }
             }
         }
         else
         {
             Debug.Log("Not enough BooCoins!");
-
-
         }
     }
-    public void UpgradeChefHire() // text list 5 sorun var
+
+    public void UpgradeChefHire()  // sorunsuz çalışıyor text list 5
     {
         if (!upgradeCost.CostHireChef.ContainsKey(upgradeCost.CostHireChefIndex)) return;
+
         costHireChef = (long)upgradeCost.CostHireChef[upgradeCost.CostHireChefIndex];
         if (soMoneyData.moneyData.booCoin >= costHireChef)
         {
-            if (upgradeTable.ValueHireChefIndex < upgradeTable.ValueHireChef.Count-1)
+            soMoneyData.moneyData.booCoin -= costHireChef;
+            kitchenAreaController.SpawnCooktop();
+            kitchenAreaController.SpawnCookWorker();
+            upgradeCost.CostHireChefIndex++;
+
+            if (upgradeCost.CostHireChef.ContainsKey(upgradeCost.CostHireChefIndex))
             {
-                upgradeCost.CostHireChefIndex++;
-                upgradeTable.ValueHireChefIndex++;
-                soMoneyData.moneyData.booCoin -= costHireChef;
-                kitchenAreaController.SpawnCooktop();
-                kitchenAreaController.SpawnCookWorker();
-               CoreUISignals.Instance.onUpgradeCostText?.Invoke(5, (long)upgradeCost.CostHireChef[upgradeCost.CostHireChefIndex]);
+                CoreUISignals.Instance.onUpgradeCostText?.Invoke(5, (long)upgradeCost.CostHireChef[upgradeCost.CostHireChefIndex]);
             }
-            else
+
+            if (upgradeCost.CostHireChefIndex == 6)
             {
-                Debug.Log("ValueX is at maximum level!");
                 CoreUISignals.Instance.onButtonTexts?.Invoke(5);
             }
         }
         else
         {
-            Debug.Log("Not enough BooCoins!");
-
-
+            Debug.Log("Yeterli BooCoin yok!");
         }
     }
-    public void UpgradeWashingWorkerSpeed() // text list 6
+
+    public void UpgradeWashingWorkerSpeed() // text list 6 sorunsuz
     {
         if (!upgradeCost.CostValueUpgradeSpeedWashingWorker.ContainsKey(upgradeCost.CostValueUpgradeSpeedWashingWorkerIndex)) return;
         costUpgradeMSWashingWorker = (long)upgradeCost.CostValueUpgradeSpeedWashingWorker[upgradeCost.CostValueUpgradeSpeedWashingWorkerIndex];
@@ -153,25 +159,27 @@ public class UpgradeManager : MonoBehaviour
                 float upgradeValue = upgradeTable.ValueUpgradeSpeedWashingWorker[++upgradeTable.ValueUpgradeSpeedWashingWorkerIndex];
                 CoreGameSignals.Instance.onDataUpgradeWashingWorkerSpeed?.Invoke(upgradeValue);
                 upgradeCost.CostValueUpgradeSpeedWashingWorkerIndex++;
-                CoreUISignals.Instance.onUpgradeCostText?.Invoke(6, (long)upgradeCost.CostValueUpgradeSpeedWashingWorker[upgradeCost.CostValueUpgradeSpeedWashingWorkerIndex]);
+                if (upgradeCost.CostValueUpgradeSpeedWashingWorkerIndex < upgradeCost.CostValueUpgradeSpeedWashingWorker.Count)
+                {
+                    CoreUISignals.Instance.onUpgradeCostText?.Invoke(6, (long)upgradeCost.CostValueUpgradeSpeedWashingWorker[upgradeCost.CostValueUpgradeSpeedWashingWorkerIndex]);
+                }
+                if (upgradeTable.ValueUpgradeSpeedWashingWorkerIndex == upgradeTable.ValueUpgradeSpeedWashingWorker.Count - 1)
+                {
+                    CoreUISignals.Instance.onButtonTexts?.Invoke(6);
+                }
             }
-            else
-            {
-                Debug.Log("ValueX is at maximum level!");
-                CoreUISignals.Instance.onButtonTexts?.Invoke(6);
-            }
+
         }
         else
         {
             Debug.Log("Not enough BooCoins!");
         }
     }
-    public void UpgradeWashingDishwasherSpeed() // text list 7
+
+    public void UpgradeWashingDishwasherSpeed() // text list 7 sorunsuz
     {
         if (!upgradeCost.CostValueUpgradeSpeedWashingDishWasher.ContainsKey(upgradeCost.CostValueUpgradeSpeedWashingDishWasherIndex)) return;
-
         costUpgradeWashingDishwasher = (long)upgradeCost.CostValueUpgradeSpeedWashingDishWasher[upgradeCost.CostValueUpgradeSpeedWashingDishWasherIndex];
-
         if (soMoneyData.moneyData.booCoin >= costUpgradeWashingDishwasher)
         {
             if (upgradeTable.ValueUpgradeSpeedWashingDishWashIndex < upgradeTable.ValueUpgradeSpeedWashingDishWash.Count - 1)
@@ -180,82 +188,73 @@ public class UpgradeManager : MonoBehaviour
                 float upgradeValue = upgradeTable.ValueUpgradeSpeedWashingDishWash[++upgradeTable.ValueUpgradeSpeedWashingDishWashIndex];
                 CoreGameSignals.Instance.onDataUpgradeWashSpeed?.Invoke(upgradeValue);
                 upgradeCost.CostValueUpgradeSpeedWashingDishWasherIndex++;
-                CoreUISignals.Instance.onUpgradeCostText?.Invoke(7, (long)upgradeCost.CostValueUpgradeSpeedWashingDishWasher[upgradeCost.CostValueUpgradeSpeedWashingDishWasherIndex]);
+                if (upgradeCost.CostValueUpgradeSpeedWashingDishWasherIndex < upgradeCost.CostValueUpgradeSpeedWashingDishWasher.Count)
+                {
+                    CoreUISignals.Instance.onUpgradeCostText?.Invoke(7, (long)upgradeCost.CostValueUpgradeSpeedWashingDishWasher[upgradeCost.CostValueUpgradeSpeedWashingDishWasherIndex]);
+                }
+                if (upgradeTable.ValueUpgradeSpeedWashingDishWashIndex == upgradeTable.ValueUpgradeSpeedWashingDishWash.Count - 1)
+                {
+                    CoreUISignals.Instance.onButtonTexts?.Invoke(7);
+                }
             }
-            else
-            {
-                Debug.Log("ValueZ is at maximum level!");
-                CoreUISignals.Instance.onButtonTexts?.Invoke(7);
-            }
+
         }
         else
         {
             Debug.Log("Not enough BooCoins!");
-
         }
     }
-  public void UpgradeDishwasherRoom() // text list 8 sorun var
-{
-    if (!upgradeCost.CostUpgradeDishwasherRoom.ContainsKey(upgradeCost.CostUpgradeDishwasherRoomIndex))
+    public void UpgradeDishwasherRoom() // text list 8 sorunsuz
     {
-        Debug.LogError($"Anahtar {upgradeCost.CostUpgradeDishwasherRoomIndex} CostUpgradeDishwasherRoom sözlüğünde bulunamadı.");
-        return;
-    }
+        if (!upgradeCost.CostUpgradeDishwasherRoom.ContainsKey(upgradeCost.CostUpgradeDishwasherRoomIndex)) return;
 
-    costUpgradeDishwasherRoom = (long)upgradeCost.CostUpgradeDishwasherRoom[upgradeCost.CostUpgradeDishwasherRoomIndex];
-
-    if (soMoneyData.moneyData.booCoin >= costUpgradeDishwasherRoom)
-    {
-        if (upgradeTable.ValueUpgradeDishwasherRoomIndex < upgradeTable.ValueUpgradeDishwasherRoom.Count - 1)
+        costUpgradeDishwasherRoom = (long)upgradeCost.CostUpgradeDishwasherRoom[upgradeCost.CostUpgradeDishwasherRoomIndex];
+        if (soMoneyData.moneyData.booCoin >= costUpgradeDishwasherRoom)
         {
             soMoneyData.moneyData.booCoin -= costUpgradeDishwasherRoom;
             dishwashingAreaController.SpawnDishwashingMachine();
             dishwashingAreaController.SpawnWashingWorker();
             upgradeCost.CostUpgradeDishwasherRoomIndex++;
-            if (!upgradeCost.CostUpgradeDishwasherRoom.ContainsKey(upgradeCost.CostUpgradeDishwasherRoomIndex))
+
+            if (upgradeCost.CostUpgradeDishwasherRoom.ContainsKey(upgradeCost.CostUpgradeDishwasherRoomIndex))
             {
-                Debug.LogError($"Anahtar {upgradeCost.CostUpgradeDishwasherRoomIndex} CostUpgradeDishwasherRoom sözlüğünde bulunamadı.");
-                return;
+                CoreUISignals.Instance.onUpgradeCostText?.Invoke(8, (long)upgradeCost.CostUpgradeDishwasherRoom[upgradeCost.CostUpgradeDishwasherRoomIndex]);
             }
-            CoreUISignals.Instance.onUpgradeCostText?.Invoke(8, (long)upgradeCost.CostUpgradeDishwasherRoom[upgradeCost.CostUpgradeDishwasherRoomIndex]);
+
+            if (upgradeCost.CostUpgradeDishwasherRoomIndex == 6)
+            {
+                CoreUISignals.Instance.onButtonTexts?.Invoke(8);
+            }
         }
         else
         {
-            Debug.Log("ValueZ is at maximum level!");
-            CoreUISignals.Instance.onButtonTexts?.Invoke(8);
+            Debug.Log("Yeterli BooCoin yok!");
         }
     }
-    else
-    {
-        Debug.Log("Not enough BooCoins!");
-    }
-}
-
-    public void UpgradeWaitersHire() // text list 1 sorun var 
+    public void UpgradeWaitersHire() // text list 1 sorunsuz
     {
         if (!upgradeCost.CostHiringWaiters.ContainsKey(upgradeCost.CostHiringWaitersIndex)) return;
         costHireWaiters = (long)upgradeCost.CostHiringWaiters[upgradeCost.CostHiringWaitersIndex];
         if (soMoneyData.moneyData.booCoin >= costHireWaiters)
         {
-            if (upgradeTable.ValueHiringWaitersIndex < upgradeTable.ValueHiringWaiters.Count - 1)
+            soMoneyData.moneyData.booCoin -= costHireWaiters;
+            serviceAreaController.SpawnServiceWorker();
+            serviceAreaController.SpawnTable();
+            upgradeCost.CostHiringWaitersIndex++;
+
+            if (upgradeCost.CostHiringWaiters.ContainsKey(upgradeCost.CostHiringWaitersIndex))
             {
-                soMoneyData.moneyData.booCoin -= costHireWaiters;
-                float upgradeValue = upgradeTable.ValueHiringWaiters[++upgradeTable.ValueHiringWaitersIndex];
-                serviceAreaController.SpawnServiceWorker();
-                serviceAreaController.SpawnTable();
-                upgradeCost.CostHiringWaitersIndex++;
                 CoreUISignals.Instance.onUpgradeCostText?.Invoke(1, (long)upgradeCost.CostHiringWaiters[upgradeCost.CostHiringWaitersIndex]);
             }
-            else
+
+            if (upgradeCost.CostHiringWaitersIndex == 6)
             {
-                Debug.Log("ValueZ is at maximum level!");
                 CoreUISignals.Instance.onButtonTexts?.Invoke(1);
             }
         }
         else
         {
-            Debug.Log("Not enough BooCoins!");
-
+            Debug.Log("Yeterli BooCoin yok!");
         }
     }
     public void IncreaseTableSize() // text list 2 tabledan referans alamıyoruz 
@@ -292,7 +291,6 @@ public class UpgradeManager : MonoBehaviour
     {
         if (!upgradeCost.CostValuesUpgradeChefMoveSpeed.ContainsKey(upgradeCost.CostUpgradeCMoveSpeedIndex)) return;
         costUpgradeChefUpgradeMoveSpeed = (long)upgradeCost.CostValuesUpgradeChefMoveSpeed[upgradeCost.CostUpgradeCMoveSpeedIndex];
-
         if (soMoneyData.moneyData.booCoin >= costUpgradeChefUpgradeMoveSpeed)
         {
             if (upgradeTable.valueUpgradeChefMoveSpeedIndex < upgradeTable.valuesUpgradeChefMoveSpeed.Count - 1)
@@ -301,13 +299,16 @@ public class UpgradeManager : MonoBehaviour
                 float upgradeValue = upgradeTable.valuesUpgradeChefMoveSpeed[++upgradeTable.valueUpgradeChefMoveSpeedIndex];
                 CoreGameSignals.Instance.onDataUpgradeChefMovementSpeed?.Invoke(upgradeValue);
                 upgradeCost.CostUpgradeCMoveSpeedIndex++;
-                CoreUISignals.Instance.onUpgradeCostText?.Invoke(4, (long)upgradeCost.CostValuesUpgradeChefMoveSpeed[upgradeCost.CostUpgradeCMoveSpeedIndex]);
+                if (upgradeCost.CostUpgradeCMoveSpeedIndex < upgradeCost.CostValuesUpgradeChefMoveSpeed.Count)
+                {
+                    CoreUISignals.Instance.onUpgradeCostText?.Invoke(4, (long)upgradeCost.CostValuesUpgradeChefMoveSpeed[upgradeCost.CostUpgradeCMoveSpeedIndex]);
+                }
+                if (upgradeTable.valueUpgradeChefMoveSpeedIndex == upgradeTable.valuesUpgradeChefMoveSpeed.Count - 1)
+                {
+                    CoreUISignals.Instance.onButtonTexts?.Invoke(4);
+                }
             }
-            else
-            {
-                Debug.Log("ValueB is at maximum level!");
-                CoreUISignals.Instance.onButtonTexts?.Invoke(4);
-            }
+
         }
         else
         {

@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class UpgradeTable : MonoBehaviour
 {
+    // hire dışındaki değerler değişebilir ekleme de haber verin
     public Dictionary<int, float> valueChefCookSpeedUpgrade = new(){
         {1, 5},
         {2, 10},
@@ -12,7 +13,6 @@ public class UpgradeTable : MonoBehaviour
         {5, 25}
     };
     public int IndexChefCookSpeedUpgrade = 0;
-
     public Dictionary<int, float> valueWaitersUpgradeSpeed = new(){
         {1, 12},
         {2, 24},
@@ -22,7 +22,6 @@ public class UpgradeTable : MonoBehaviour
     };
     public int IndexWaitersUpgradeSpeed = 0;
 
-
     public Dictionary<int, float> valueIncreaseTable = new(){
         {1, 1},
         {2, 2},
@@ -31,7 +30,6 @@ public class UpgradeTable : MonoBehaviour
         
     };
     public int valueIncreaseTableIndex = 0;
-
     public Dictionary<int, float> valuesUpgradeChefMoveSpeed = new(){
         {1, 35},
         {2, 70},
@@ -40,36 +38,12 @@ public class UpgradeTable : MonoBehaviour
         {5, 175}
     };
     public int valueUpgradeChefMoveSpeedIndex = 0;
-    public Dictionary<int, float> ValueHiringWaiters = new(){
-        {0, 0},
-        {1, 1},
-        {2, 2},
-        {3, 3},
-        {4, 4},
-        {5,5},
-        {6,6}
-
-    };
-    public int ValueHiringWaitersIndex = 0;
-
-     public Dictionary<int, int> ValueHireChef = new(){
-      {1, 5},
-        {2, 10},
-        {3, 15},
-        {4, 20},
-        {5, 25},
-        {6, 30},
-        {7, 35}
-
-    };
-    public int ValueHireChefIndex = 0;
       public Dictionary<int, float> ValueUpgradeSpeedWashingWorker = new(){
-       {1, 35},
+        {1, 35},
         {2, 70},
         {3, 105},
         {4, 140},
-        {5, 175}
-
+        {5, 175},
     };
     public int ValueUpgradeSpeedWashingWorkerIndex = 0;
      public Dictionary<int, float> ValueUpgradeSpeedWashingDishWash = new(){
@@ -81,18 +55,7 @@ public class UpgradeTable : MonoBehaviour
 
     };
     public int ValueUpgradeSpeedWashingDishWashIndex = 0;
-      public Dictionary<int, float> ValueUpgradeDishwasherRoom = new(){
-       {1, 35},
-        {2, 70},
-        {3, 105},
-        {4, 140},
-        {5, 175},
-        {6, 200},
-        {7, 225}
-       
-
-    };
-    public int ValueUpgradeDishwasherRoomIndex = 0;
+     
 }
 
 

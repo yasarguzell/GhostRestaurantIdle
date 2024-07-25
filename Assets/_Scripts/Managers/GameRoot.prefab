@@ -215,11 +215,8 @@ MonoBehaviour:
   IndexWaitersUpgradeSpeed: 0
   valueIncreaseTableIndex: 0
   valueUpgradeChefMoveSpeedIndex: 0
-  ValueHiringWaitersIndex: 0
-  ValueHireChefIndex: 0
   ValueUpgradeSpeedWashingWorkerIndex: 0
   ValueUpgradeSpeedWashingDishWashIndex: 0
-  ValueUpgradeDishwasherRoomIndex: 0
 --- !u!114 &4890597205102587702
 MonoBehaviour:
   m_ObjectHideFlags: 0

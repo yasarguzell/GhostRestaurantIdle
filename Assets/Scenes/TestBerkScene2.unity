@@ -218,7 +218,7 @@ Transform:
   m_GameObject: {fileID: 34953358}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: -0.3, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1176,7 +1176,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   IsInUse: 0
-  IsSelectedByWorker: 0
+  IsSelectedByCook: 0
+  IsSelectedByServer: 0
 --- !u!65 &433983828
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1866,7 +1867,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   IsInUse: 0
-  IsSelectedByWorker: 0
+  IsSelectedByCook: 0
+  IsSelectedByServer: 0
 --- !u!65 &805596202
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2106,7 +2108,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   IsInUse: 0
-  IsSelectedByWorker: 0
+  IsSelectedByCook: 0
+  IsSelectedByServer: 0
 --- !u!65 &844058674
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2862,10 +2865,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: GameRoot
       objectReference: {fileID: 0}
-    - target: {fileID: 3691275994511106671, guid: aed0ccb6c9336be4e8b83dbc98ed409a, type: 3}
-      propertyPath: ValueHireChefIndex
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 4536653908895792091, guid: aed0ccb6c9336be4e8b83dbc98ed409a, type: 3}
       propertyPath: kitchenAreaController
       value: 
@@ -2878,10 +2877,6 @@ PrefabInstance:
       propertyPath: dishwashingAreaController
       value: 
       objectReference: {fileID: 34953360}
-    - target: {fileID: 4890597205102587702, guid: aed0ccb6c9336be4e8b83dbc98ed409a, type: 3}
-      propertyPath: CostHireChefIndex
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 6763858307115868985, guid: aed0ccb6c9336be4e8b83dbc98ed409a, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -3583,6 +3578,10 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 278113574}
+    - target: {fileID: 6287035357459618953, guid: 9a0bc071413779f408e34cafb149b2c8, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6430691712659162671, guid: 9a0bc071413779f408e34cafb149b2c8, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
@@ -3953,7 +3952,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   IsInUse: 0
-  IsSelectedByWorker: 0
+  IsSelectedByCook: 0
+  IsSelectedByServer: 0
 --- !u!65 &1496950770
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -4324,7 +4324,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   IsInUse: 0
-  IsSelectedByWorker: 0
+  IsSelectedByCook: 0
+  IsSelectedByServer: 0
 --- !u!65 &1628524937
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -4887,7 +4888,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   IsInUse: 0
-  IsSelectedByWorker: 0
+  IsSelectedByCook: 0
+  IsSelectedByServer: 0
 --- !u!65 &1833527168
 BoxCollider:
   m_ObjectHideFlags: 0
