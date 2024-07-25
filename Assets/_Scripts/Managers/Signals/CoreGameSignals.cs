@@ -5,11 +5,11 @@ public class CoreGameSignals : MonoBehaviour
 {
    
     #region  Data Signals
-    public UnityAction<float> onDataValueX=delegate{};
-    public UnityAction<float> onDataValueY=delegate{};
-    public UnityAction<float> onDataValueZ=delegate{};
-    public UnityAction<float> onDataValueA=delegate{};
-    public UnityAction<float> onDataValueB=delegate{};
+    public UnityAction<float> onDataUpgradeChefCookSpeed=delegate{};
+    public UnityAction<float> onDataUpgradeChefMovementSpeed=delegate{};
+    public UnityAction<float> onDataUpgradeWaitersSpeed=delegate{};
+    public UnityAction<float> onDataUpgradeWashingWorkerSpeed=delegate{};
+    public UnityAction<float> onDataUpgradeWashSpeed=delegate{};
 
     #endregion
     public static CoreGameSignals Instance { get; private set; }

@@ -55,6 +55,7 @@ public class ServiceAreaController : MonoBehaviour
         ServiceWorker worker = Instantiate(_serviceWorker, _workerSpawnLocation).GetComponent<ServiceWorker>();
         _serviceWorkers.Add(worker);
         worker.Init(this, _initialMovementSpeed, _idlePosition.position, _betweenAreasController);
+      
     }
 
     public void SpawnCustomer(Vector3 seatPosition, Table tableReference, int seatIndex)

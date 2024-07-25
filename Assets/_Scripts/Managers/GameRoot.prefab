@@ -151,7 +151,15 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   costTexts:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
@@ -203,11 +211,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d28ba759c1850b34caae224bcb48c1b0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  valueXIndex: 0
-  valueYIndex: 0
-  valueZIndex: 0
-  valueAIndex: 0
-  valueBIndex: 0
+  IndexChefCookSpeedUpgrade: 0
+  IndexWaitersUpgradeSpeed: 0
+  valueIncreaseTableIndex: 0
+  valueUpgradeChefMoveSpeedIndex: 0
+  ValueHiringWaitersIndex: 0
+  ValueHireChefIndex: 0
+  ValueUpgradeSpeedWashingWorkerIndex: 0
+  ValueUpgradeSpeedWashingDishWashIndex: 0
+  ValueUpgradeDishwasherRoomIndex: 0
 --- !u!114 &4890597205102587702
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -220,11 +232,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5dd8a88805e04774a9d4442b993903cf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CostValueXIndex: 0
-  CostValueYIndex: 0
-  CostValueZIndex: 0
-  CostValueAIndex: 0
-  CostValueBIndex: 0
+  CostChefCookSpeedIndex: 0
+  CostWaitersUpgradeIndex: 0
+  CostIncreaseTableIndex: 0
+  CostUpgradeCMoveSpeedIndex: 0
+  CostHiringWaitersIndex: 0
+  CostHireChefIndex: 0
+  CostValueUpgradeSpeedWashingWorkerIndex: 0
+  CostValueUpgradeSpeedWashingDishWasherIndex: 0
+  CostUpgradeDishwasherRoomIndex: 0
 --- !u!114 &4536653908895792091
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -237,6 +253,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe2da64114b02f2479567c32636e5613, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  serviceAreaController: {fileID: 0}
+  tableController: {fileID: 0}
+  kitchenAreaController: {fileID: 0}
+  dishwashingAreaController: {fileID: 0}
 --- !u!1 &8843831072197580573
 GameObject:
   m_ObjectHideFlags: 0

@@ -31,20 +31,20 @@ public class DataManager : MonoBehaviour
 
     void Subscribe()
     {
-        CoreGameSignals.Instance.onDataValueX += onGetDataX;
-        CoreGameSignals.Instance.onDataValueY += onGetDataY;
-        CoreGameSignals.Instance.onDataValueZ += onGetDataZ;
-        CoreGameSignals.Instance.onDataValueA += onGetDataA;
-        CoreGameSignals.Instance.onDataValueB += onGetDataB;
+        CoreGameSignals.Instance.onDataUpgradeChefCookSpeed += onGetDataX;
+        CoreGameSignals.Instance.onDataUpgradeWaitersSpeed += onGetDataY;
+        CoreGameSignals.Instance.onDataUpgradeWashingWorkerSpeed += onGetDataZ;
+        CoreGameSignals.Instance.onDataUpgradeWashSpeed += onGetDataA;
+        CoreGameSignals.Instance.onDataUpgradeChefMovementSpeed += onGetDataB;
 
     }
     private void UnSubscribe()
     {
-        CoreGameSignals.Instance.onDataValueX -= onGetDataX;
-        CoreGameSignals.Instance.onDataValueY -= onGetDataY;
-        CoreGameSignals.Instance.onDataValueZ -= onGetDataZ;
-        CoreGameSignals.Instance.onDataValueA -= onGetDataA;
-        CoreGameSignals.Instance.onDataValueB -= onGetDataB;
+        CoreGameSignals.Instance.onDataUpgradeChefCookSpeed -= onGetDataX;
+        CoreGameSignals.Instance.onDataUpgradeWaitersSpeed -= onGetDataY;
+        CoreGameSignals.Instance.onDataUpgradeWashingWorkerSpeed -= onGetDataZ;
+        CoreGameSignals.Instance.onDataUpgradeWashSpeed -= onGetDataA;
+        CoreGameSignals.Instance.onDataUpgradeChefMovementSpeed -= onGetDataB;
     }
 
 
@@ -65,12 +65,12 @@ public class DataManager : MonoBehaviour
 
     private void onGetDataY(float value)
     {
-         soDataHolder.dataHolder.valueY += value;
+         soDataHolder.dataHolder.waitersSpeedUpgrade += value;
     }
 
     private void onGetDataX(float value)
     {
-         soDataHolder.dataHolder.valueX += value;
+         soDataHolder.dataHolder.chefCookSpeedUpgrade += value;
     }
 
 

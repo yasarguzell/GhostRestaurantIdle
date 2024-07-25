@@ -4,48 +4,95 @@ using UnityEngine;
 
 public class UpgradeTable : MonoBehaviour
 {
-    public Dictionary<int, float> valuesX = new(){
+    public Dictionary<int, float> valueChefCookSpeedUpgrade = new(){
         {1, 5},
         {2, 10},
         {3, 15},
         {4, 20},
         {5, 25}
     };
-    public int valueXIndex = 0;
+    public int IndexChefCookSpeedUpgrade = 0;
 
-    public Dictionary<int, float> valuesY = new(){
+    public Dictionary<int, float> valueWaitersUpgradeSpeed = new(){
         {1, 12},
         {2, 24},
         {3, 36},
         {4, 48},
         {5, 60}
     };
-    public int valueYIndex = 0;
+    public int IndexWaitersUpgradeSpeed = 0;
 
-    public Dictionary<int, float> valuesZ = new(){
-        {1, 15},
-        {2, 30},
-        {3, 45},
-        {4, 60},
-        {5, 75}
+
+    public Dictionary<int, float> valueIncreaseTable = new(){
+        {1, 1},
+        {2, 2},
+        {3, 3},
+        {4, 4},
+        
     };
-    public int valueZIndex = 0;
+    public int valueIncreaseTableIndex = 0;
 
-    public Dictionary<int, float> valuesA = new(){
-        {1, 20},
-        {2, 40},
-        {3, 60},
-        {4, 80},
-        {5, 100}
-    };
-    public int valueAIndex = 0;
-
-    public Dictionary<int, float> valuesB = new(){
+    public Dictionary<int, float> valuesUpgradeChefMoveSpeed = new(){
         {1, 35},
         {2, 70},
         {3, 105},
         {4, 140},
         {5, 175}
     };
-    public int valueBIndex = 0;
+    public int valueUpgradeChefMoveSpeedIndex = 0;
+    public Dictionary<int, float> ValueHiringWaiters = new(){
+        {0, 0},
+        {1, 1},
+        {2, 2},
+        {3, 3},
+        {4, 4},
+        {5,5},
+        {6,6}
+
+    };
+    public int ValueHiringWaitersIndex = 0;
+
+     public Dictionary<int, int> ValueHireChef = new(){
+      {1, 5},
+        {2, 10},
+        {3, 15},
+        {4, 20},
+        {5, 25},
+        {6, 30},
+        {7, 35}
+
+    };
+    public int ValueHireChefIndex = 0;
+      public Dictionary<int, float> ValueUpgradeSpeedWashingWorker = new(){
+       {1, 35},
+        {2, 70},
+        {3, 105},
+        {4, 140},
+        {5, 175}
+
+    };
+    public int ValueUpgradeSpeedWashingWorkerIndex = 0;
+     public Dictionary<int, float> ValueUpgradeSpeedWashingDishWash = new(){
+       {1, 35},
+        {2, 70},
+        {3, 105},
+        {4, 140},
+        {5, 175}
+
+    };
+    public int ValueUpgradeSpeedWashingDishWashIndex = 0;
+      public Dictionary<int, float> ValueUpgradeDishwasherRoom = new(){
+       {1, 35},
+        {2, 70},
+        {3, 105},
+        {4, 140},
+        {5, 175},
+        {6, 200},
+        {7, 225}
+       
+
+    };
+    public int ValueUpgradeDishwasherRoomIndex = 0;
 }
+
+

@@ -39,7 +39,7 @@ public class Table : MonoBehaviour
     }
 
     [ContextMenu("Add Seat")]
-    private void AddSeat()
+    public void AddSeat()
     {
         if (_seatPositions.Length == _seatAmount)
             return;
