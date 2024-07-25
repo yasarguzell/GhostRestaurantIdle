@@ -74,8 +74,10 @@ public class CookWorker : MonoBehaviour
         // Move to ready food tray
         yield return StartCoroutine(MoveToPosition(tray.transform.position));
 
-        // Drop food!!!!!!!!!!!!
+        tray.IsInUse = true;
+        tray.IsSelectedByCook= false;
 
+        // Drop food!!!!!!!!!!!!
         WorkerState = WorkerState.idle;
         yield return StartCoroutine(MoveToPosition(_idlePosition));
     }

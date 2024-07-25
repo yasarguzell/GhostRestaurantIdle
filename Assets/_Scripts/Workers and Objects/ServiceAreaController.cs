@@ -44,7 +44,7 @@ public class ServiceAreaController : MonoBehaviour
         var table = Instantiate(_table, _tableLocations[_tables.Count]).GetComponent<Table>();
         _tables.Add(table);
         NavMeshSurfaceController.Instance.UpdateNavMesh();
-        table.Init(this, _getOutPosition, _initialSeatAmount);
+        table.Init(this, _getOutPosition/*, _initialSeatAmount*/);
     }
 
     [ContextMenu("Spawn Worker")]
@@ -64,7 +64,7 @@ public class ServiceAreaController : MonoBehaviour
         Customer customer = Instantiate(_customer, _customerSpawnPoint).GetComponent<Customer>();
         // Initialize the customer
         customer.Init(this, _initialEatingTime, _initialMovementSpeed);
-        customer.StartEatingMission(seatPosition, _getOutPosition.position, tableReference, seatIndex);
+        customer.StartEatingMission(seatPosition, _getOutPosition.position, tableReference, seatIndex,.1f);
     }
 
     public bool TryGetAvailableWorker(out ServiceWorker worker)

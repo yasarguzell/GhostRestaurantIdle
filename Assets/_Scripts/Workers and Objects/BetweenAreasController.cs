@@ -54,9 +54,9 @@ public class BetweenAreasController : MonoBehaviour
     {
         for (int i = 0; i < _readyFoodTrays.Count; i++)
         {
-            if (!_readyFoodTrays[i].IsInUse)
+            if (!_readyFoodTrays[i].IsInUse && !_readyFoodTrays[i].IsSelectedByCook)
             {
-                _readyFoodTrays[i].IsInUse = true;
+                _readyFoodTrays[i].IsSelectedByCook = true;
                 tray = _readyFoodTrays[i];
 
                 _readyFoodTrays.RemoveAt(i);
@@ -74,10 +74,10 @@ public class BetweenAreasController : MonoBehaviour
     {
         for (int i = 0; i < _readyFoodTrays.Count; i++)
         {
-            if (_readyFoodTrays[i].IsInUse && !_readyFoodTrays[i].IsSelectedByWorker)
+            if (_readyFoodTrays[i].IsInUse && !_readyFoodTrays[i].IsSelectedByServer)
             {
                 tray = _readyFoodTrays[i];
-                _readyFoodTrays[i].IsSelectedByWorker = true;
+                _readyFoodTrays[i].IsSelectedByServer = true;
                 return true;
             }
         }

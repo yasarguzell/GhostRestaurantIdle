@@ -32,24 +32,36 @@ public class ServiceWorker : MonoBehaviour
         _betweenAreasController = betweenAreasController;
     }
 
-    public IEnumerator GetFoodCoroutine(Vector3 customerPosition)
+    public IEnumerator GetFoodCoroutine(Vector3 customerPosition, Customer customer)
     {
         // find tray with food
         ReadyFoodTray tray = null;
-        yield return StartCoroutine(FindReadyFoodCoroutine((foundTray) => tray = foundTray));
+        Debug.Log("Bieinci");
+        while (!_betweenAreasController.TryGetReadyFood(out tray))
+        {
+            customer.RestartOrder();
+
+            WorkerState = WorkerState.idle;
+            StopAllCoroutines();
+            yield return null;
+        }
+
+        //yield return StartCoroutine(FindReadyFoodCoroutine((foundTray) => tray = foundTray));
 
         // Move to tray
         yield return StartCoroutine(MoveToPosition(tray.transform.position));
-
+        Debug.Log("ikinci");
         // get food
         tray.IsInUse = false;
-        tray.IsSelectedByWorker = false;
+        tray.IsSelectedByServer = false;
 
         // move back to customer
         yield return StartCoroutine(MoveToPosition(customerPosition));
 
+        Debug.Log("ucunucu");
+        yield return StartCoroutine(MoveToPosition(_idlePosition));
         // drop food
-
+        Debug.Log("dort");
         WorkerState = WorkerState.idle;
 
     }
@@ -59,6 +71,7 @@ public class ServiceWorker : MonoBehaviour
         // Move to seat
         yield return StartCoroutine(MoveToPosition(seatPosition));
 
+        //!!!!
         // take dish
         table.GetCustomer(seatIndex);// call for new customer on table
 
@@ -74,15 +87,12 @@ public class ServiceWorker : MonoBehaviour
         StartCoroutine(ReturnDirtyDishCoroutine(seatPosition, table, seatIndex));
     }
 
-    private IEnumerator FindReadyFoodCoroutine(System.Action<ReadyFoodTray> callback)
-    {
-        ReadyFoodTray tray;
-        while (!_betweenAreasController.TryGetReadyFood(out tray))
-        {
-            yield return null;
-        }
-        callback(tray);
-    }
+    //private IEnumerator FindReadyFoodCoroutine(System.Action<ReadyFoodTray> callback)
+    //{
+    //    ReadyFoodTray tray;
+
+    //    callback(tray);
+    //}
 
     private IEnumerator MoveToPosition(Vector3 targetPosition)
     {

@@ -13,8 +13,11 @@ public class Customer : MonoBehaviour
     [SerializeField] private float _movementSpeed;
     private Vector3 _idlePosition;
     private NavMeshAgent _navMeshAgent;
-
-
+    private Coroutine coroutine;
+    Vector3 seatPosition;
+    Vector3 getOutPosition;
+    Table tableReferance; int 
+        seatIndex;
     private void Awake()
     {
         _navMeshAgent = GetComponent<NavMeshAgent>();
@@ -28,14 +31,20 @@ public class Customer : MonoBehaviour
         _movementSpeed = movementSpeed;
     }
 
-    public void StartEatingMission(Vector3 seatPosition, Vector3 getOutPosition, Table tableReferance, int seatIndex)
+    public void StartEatingMission(Vector3 seatPosition, Vector3 getOutPosition, Table tableReferance, int seatIndex, float waitingTime)
     {
-        StartCoroutine(EatingMission(seatPosition, getOutPosition, tableReferance, seatIndex));
+        this.seatPosition = seatPosition;
+        this.getOutPosition = getOutPosition;
+        this.tableReferance = tableReferance;
+        this.seatIndex = seatIndex;
+        coroutine = StartCoroutine(EatingMission(seatPosition, getOutPosition, tableReferance, seatIndex, waitingTime));
     }
 
 
-    private IEnumerator EatingMission(Vector3 seatPosition, Vector3 getOutPosition, Table tableReference, int seatIndex)
+    private IEnumerator EatingMission(Vector3 seatPosition, Vector3 getOutPosition, Table tableReference, int seatIndex,float waitingTime)
     {
+        yield return new WaitForSeconds(waitingTime);
+        print("Eating");
         // Go to clean dish
         // return to idle
         // find available cooktop
@@ -44,22 +53,33 @@ public class Customer : MonoBehaviour
         // go to ready food tray
         // Move to dish
         yield return StartCoroutine(MoveToPosition(seatPosition));
-
+        print("Eating2");
         // request server
         ServiceWorker worker = null;
         yield return StartCoroutine(FindAvailableWorkerCoroutine((foundWorker) => worker = foundWorker));
-
+        print("Eating3");
         // request food
-        yield return StartCoroutine(worker.GetFoodCoroutine(transform.position));
 
+        yield return StartCoroutine(worker.GetFoodCoroutine(transform.position, this));
+
+        print("Eating4");
         yield return StartCoroutine(Eat());
 
+        print("Eating5");
         // call for dirty dish pickup
         tableReference.CallForDirtyDishPickUp(seatIndex);
 
+        print("Eating6");
         yield return StartCoroutine(MoveToPosition(getOutPosition));
 
+
         Destroy(gameObject);
+        print("Eating7");
+    }
+  public  void RestartOrder()
+    {
+        StopCoroutine(coroutine);
+        StartEatingMission(seatPosition,getOutPosition,tableReferance,seatIndex,2);
     }
 
     private IEnumerator FindAvailableWorkerCoroutine(System.Action<ServiceWorker> callback)
@@ -79,7 +99,9 @@ public class Customer : MonoBehaviour
         while (_navMeshAgent.pathPending || _navMeshAgent.remainingDistance > _navMeshAgent.stoppingDistance)
         {
             yield return null;
+
         }
+
     }
 
     private IEnumerator Eat()
