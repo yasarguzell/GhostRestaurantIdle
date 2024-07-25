@@ -13,7 +13,6 @@ public class DishwashingWorker : MonoBehaviour
     public Image TimerImage;
     private DishwashingAreaController _areaController;
     [SerializeField] private float _cleaningTime;
-    [SerializeField] private float _movementSpeed;
     private Vector3 _idlePosition;
     private NavMeshAgent _navMeshAgent;
 
@@ -28,8 +27,7 @@ public class DishwashingWorker : MonoBehaviour
     public void Init(DishwashingAreaController areaController, float cleaningTime, float movementSpeed, Vector3 idlePosition, BetweenAreasController betweenAreasController)
     {
         _cleaningTime = cleaningTime;
-        _movementSpeed = movementSpeed;
-        _areaController = areaController;
+        _navMeshAgent.speed = movementSpeed; _areaController = areaController;
         _idlePosition = idlePosition;
         _betweenAreasController = betweenAreasController;
     }

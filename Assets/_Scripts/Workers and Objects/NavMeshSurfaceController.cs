@@ -22,6 +22,7 @@ public class NavMeshSurfaceController : MonoBehaviour
     void Start()
     {
         _navMeshSurface = GetComponent<NavMeshSurface>();
+        UpdateNavMesh();
     }
 
     [ContextMenu("Update Navmesh")]

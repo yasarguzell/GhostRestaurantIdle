@@ -10,13 +10,11 @@ public class Customer : MonoBehaviour
     public ServiceAreaController _areaController;
     public Image TimerImage;
     [SerializeField] private float _eatingTime;
-    [SerializeField] private float _movementSpeed;
-    private Vector3 _idlePosition;
     private NavMeshAgent _navMeshAgent;
     private Coroutine coroutine;
     Vector3 seatPosition;
     Vector3 getOutPosition;
-    Table tableReferance; int 
+    Table tableReferance; int
         seatIndex;
     private void Awake()
     {
@@ -28,7 +26,7 @@ public class Customer : MonoBehaviour
     {
         _areaController = areaController;
         _eatingTime = eatingTime;
-        _movementSpeed = movementSpeed;
+        _navMeshAgent.speed = movementSpeed;
     }
 
     public void StartEatingMission(Vector3 seatPosition, Vector3 getOutPosition, Table tableReferance, int seatIndex, float waitingTime)
@@ -41,10 +39,9 @@ public class Customer : MonoBehaviour
     }
 
 
-    private IEnumerator EatingMission(Vector3 seatPosition, Vector3 getOutPosition, Table tableReference, int seatIndex,float waitingTime)
+    private IEnumerator EatingMission(Vector3 seatPosition, Vector3 getOutPosition, Table tableReference, int seatIndex, float waitingTime)
     {
         yield return new WaitForSeconds(waitingTime);
-        print("Eating");
         // Go to clean dish
         // return to idle
         // find available cooktop
@@ -53,33 +50,27 @@ public class Customer : MonoBehaviour
         // go to ready food tray
         // Move to dish
         yield return StartCoroutine(MoveToPosition(seatPosition));
-        print("Eating2");
         // request server
         ServiceWorker worker = null;
         yield return StartCoroutine(FindAvailableWorkerCoroutine((foundWorker) => worker = foundWorker));
-        print("Eating3");
         // request food
 
         yield return StartCoroutine(worker.GetFoodCoroutine(transform.position, this));
 
-        print("Eating4");
         yield return StartCoroutine(Eat());
 
-        print("Eating5");
         // call for dirty dish pickup
         tableReference.CallForDirtyDishPickUp(seatIndex);
 
-        print("Eating6");
         yield return StartCoroutine(MoveToPosition(getOutPosition));
 
 
         Destroy(gameObject);
-        print("Eating7");
     }
-  public  void RestartOrder()
+    public void RestartOrder()
     {
         StopCoroutine(coroutine);
-        StartEatingMission(seatPosition,getOutPosition,tableReferance,seatIndex,2);
+        StartEatingMission(seatPosition, getOutPosition, tableReferance, seatIndex, 2);
     }
 
     private IEnumerator FindAvailableWorkerCoroutine(System.Action<ServiceWorker> callback)

@@ -238,7 +238,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _initialWashingTime: 5
-  _initialMovementSpeed: 2
+  _initialMovementSpeed: 3.5
   _maxWorkerAmount: 6
   _betweenAreasController: {fileID: 34953362}
   _idlePosition: {fileID: 336097152}
@@ -265,7 +265,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _initialCookingTime: 5
-  _initialMovementSpeed: 3
+  _initialMovementSpeed: 3.5
   _maxWorkerAmount: 6
   _betweenAreasController: {fileID: 34953362}
   _idlePosition: {fileID: 607391598}
@@ -325,7 +325,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a68748f7edd3649678bbe24db98ce5e8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _initialMovementSpeed: 4
+  _initialMovementSpeed: 3.5
   _maxWorkerAmount: 6
   _initialSeatAmount: 1
   _customer: {fileID: 7651963459952646031, guid: 8ed8132e685b449d789d7213613d58b4, type: 3}

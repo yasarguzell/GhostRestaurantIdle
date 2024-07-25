@@ -13,7 +13,6 @@ public class CookWorker : MonoBehaviour
     public Image TimerImage;
     private KitchenAreaController _areaController;
     [SerializeField] private float _cookingTime;
-    [SerializeField] private float _movementSpeed;
     private Vector3 _idlePosition;
     private NavMeshAgent _navMeshAgent;
 
@@ -28,7 +27,7 @@ public class CookWorker : MonoBehaviour
     public void Init(KitchenAreaController areaController, float cookingTime, float movementSpeed, Vector3 idlePosition, BetweenAreasController betweenAreasController)
     {
         _cookingTime = cookingTime;
-        _movementSpeed = movementSpeed;
+        _navMeshAgent.speed = movementSpeed;
         _areaController = areaController;
         _idlePosition = idlePosition;
         _betweenAreasController = betweenAreasController;

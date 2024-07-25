@@ -12,7 +12,6 @@ public class ServiceWorker : MonoBehaviour
     public WorkerState WorkerState;
     public Image TimerImage;
     private ServiceAreaController _areaController;
-    [SerializeField] private float _movementSpeed;
     private Vector3 _idlePosition;
     private NavMeshAgent _navMeshAgent;
     private Coroutine _moveToIdleCoroutine;
@@ -27,7 +26,7 @@ public class ServiceWorker : MonoBehaviour
 
     public void Init(ServiceAreaController areaController, float movementSpeed, Vector3 idlePosition, BetweenAreasController betweenAreasController)
     {
-        _movementSpeed = movementSpeed;
+        _navMeshAgent.speed = movementSpeed;
         _areaController = areaController;
         _idlePosition = idlePosition;
         _betweenAreasController = betweenAreasController;
