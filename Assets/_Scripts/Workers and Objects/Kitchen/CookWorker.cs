@@ -111,7 +111,7 @@ public class CookWorker : MonoBehaviour
         ReadyFoodTray tray;
         while (!_betweenAreasController.TryGetAvailableReadyFoodTray(out tray))
         {
-            yield return null;
+            yield return new WaitForSeconds(1);
         }
         callback(tray);
     }
@@ -121,7 +121,7 @@ public class CookWorker : MonoBehaviour
         Cooktop cooktop;
         while (!_areaController.TryGetAvailableCooktop(out cooktop))
         {
-            yield return null;
+            yield return new WaitForSeconds(1);
         }
         callback(cooktop);
     }

@@ -38,7 +38,7 @@ public class Table : MonoBehaviour
     {
         //if (Input.GetKeyDown(KeyCode.Space))
             //if (CanThereAnyChair())
-            //    print("Masada Boþ yer var");
+            //    print("Masada Boï¿½ yer var");
             //else
             //    print("Masada bos yer yok!!!!");
     }
@@ -76,7 +76,7 @@ public class Table : MonoBehaviour
         ServiceWorker worker = null;
         while (!_serviceAreaController.TryGetAvailableWorker(out worker))
         {
-            yield return null;
+            yield return new WaitForSeconds(1);
         }
 
         worker.StartReturningDirtyDishMission(chairs[seatIndex].transform.position, this, seatIndex);

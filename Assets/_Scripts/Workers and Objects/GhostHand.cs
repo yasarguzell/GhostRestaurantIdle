@@ -46,7 +46,7 @@ public class GhostHand : MonoBehaviour
         DirtyDishesTray tray;
         while (!_betweenAreasController.TryGetAvailableDirtyDishTray(out tray))
         {
-            yield return null;
+            yield return new WaitForSeconds(1);
         }
         callback(tray);
     }

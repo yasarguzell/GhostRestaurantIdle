@@ -102,7 +102,7 @@ public class DishwashingWorker : MonoBehaviour
         DishwashingMachine machine;
         while (!_areaController.TryGetAvailableDishwashingMachine(out machine))
         {
-            yield return null;
+            yield return new WaitForSeconds(1);
         }
         callback(machine);
     }
@@ -112,7 +112,7 @@ public class DishwashingWorker : MonoBehaviour
         CleanDishesTray tray;
         while (!_betweenAreasController.TryGetAvailableCleanDishTray(out tray))
         {
-            yield return null;
+            yield return new WaitForSeconds(1);
         }
         callback(tray);
     }

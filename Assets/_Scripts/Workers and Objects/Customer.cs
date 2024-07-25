@@ -87,7 +87,7 @@ public class Customer : MonoBehaviour
         ServiceWorker worker;
         while (!_areaController.TryGetAvailableWorker(out worker))
         {
-            yield return null;
+            yield return new WaitForSeconds(1);
         }
         callback(worker);
     }
