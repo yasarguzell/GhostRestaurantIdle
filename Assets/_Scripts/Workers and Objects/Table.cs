@@ -6,7 +6,7 @@ using UnityEngine.UIElements;
 
 public class Table : MonoBehaviour
 {
-    [SerializeField] private int _seatAmount = 1;
+    [SerializeField] private int _seatAmount = 4;
     [SerializeField] private Transform[] _seatPositions;
     private ServiceAreaController _serviceAreaController;
     private Transform _getOutPosition;

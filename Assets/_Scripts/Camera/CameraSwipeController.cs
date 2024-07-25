@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class CameraSwipeController : MonoBehaviour
 {
-    public float cameraSpeed = 0.2f;
+    public float cameraSpeed = 12f;
     public float size = 12f;
     private Vector2 startTouchPosition, endTouchPosition;
     private bool isDragging = false;
@@ -83,16 +83,16 @@ public class CameraSwipeController : MonoBehaviour
                 endTouchPosition = touch.position;
                 Vector2 swipeDelta = endTouchPosition - startTouchPosition;
 
-                if (Mathf.Abs(swipeDelta.x) > Mathf.Abs(swipeDelta.y) && swipeDelta.x > 0 && mapIndex > 0)
+                if (Mathf.Abs(swipeDelta.x) > Mathf.Abs(swipeDelta.y) && swipeDelta.x > 0 && mapIndex < 2)
                 {
                     MoveCameraLeft();
-                    mapIndex--;
+                    mapIndex++;
                     CoreUISignals.Instance.onRoomUIIndex(mapIndex);
                 }
-                else if (Mathf.Abs(swipeDelta.x) > Mathf.Abs(swipeDelta.y) && swipeDelta.x < 0 && mapIndex < 2)//maps.Count
+                else if (Mathf.Abs(swipeDelta.x) > Mathf.Abs(swipeDelta.y) && swipeDelta.x < 0 && mapIndex > 0)//maps.Count
                 {
                     MoveCameraRight();
-                    mapIndex++;
+                    mapIndex--;
                     CoreUISignals.Instance.onRoomUIIndex(mapIndex);
                 }
                 else if (Mathf.Abs(swipeDelta.x) < Mathf.Abs(swipeDelta.y) && swipeDelta.y < 0)
