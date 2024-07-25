@@ -78,6 +78,7 @@ public class ServiceWorker : MonoBehaviour
             StopCoroutine(_moveToIdleCoroutine);
         // Move to seat
         yield return StartCoroutine(MoveToPosition(seatPosition));
+        MoneyManagement.Instance.UpdateBooCoin(150);
 
         //!!!!
         // take dish
@@ -112,5 +113,11 @@ public class ServiceWorker : MonoBehaviour
             yield return null;
         }
     }
+     public void UpdateDatas(float amount)
+    {
+        _navMeshAgent.speed=amount;
+        
+    }
+
 
 }

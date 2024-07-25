@@ -16,6 +16,7 @@ public class KitchenAreaController : MonoBehaviour
     [SerializeField] private GameObject _cookWorker;
     [SerializeField] private Transform[] _cooktopLocations;
     [SerializeField] private Transform _workerSpawnLocation;
+    SODataHolder sODataHolder;
 
     // Spawned objects
     private List<Cooktop> _cooktops;
@@ -26,7 +27,27 @@ public class KitchenAreaController : MonoBehaviour
     {
         _cooktops = new List<Cooktop>();
         _cookWorkers = new List<CookWorker>();
+         sODataHolder= GetData();
     }
+    void Start()
+    {
+        CoreGameSignals.Instance.onDataChanged+=onDataChanged;
+    }
+
+    private void onDataChanged()
+    {
+    
+        foreach(CookWorker dishwashingWorker in _cookWorkers)
+        {
+         dishwashingWorker.UpdateDatas(_initialCookingTime*sODataHolder.dataHolder.chefMovementSpeed, _initialMovementSpeed*sODataHolder.dataHolder.chefCookSpeedUpgrade);
+        }
+    }
+
+    SODataHolder GetData()
+    {
+        return Resources.Load<SODataHolder>("Datas/SODataHolder");
+    }
+
 
     [ContextMenu("Spawn Cooktop")]
     public void SpawnCooktop()
@@ -45,7 +66,7 @@ public class KitchenAreaController : MonoBehaviour
             return;
         CookWorker worker = Instantiate(_cookWorker, _workerSpawnLocation).GetComponent<CookWorker>();
         _cookWorkers.Add(worker);
-        worker.Init(this, _initialCookingTime, _initialMovementSpeed, _idlePosition.position, _betweenAreasController);
+        worker.Init(this, _initialCookingTime*sODataHolder.dataHolder.chefCookSpeedUpgrade, _initialMovementSpeed*sODataHolder.dataHolder.chefMovementSpeed, _idlePosition.position, _betweenAreasController);
     }
 
     public bool TryGetAvailableCooktop(out Cooktop cooktop)

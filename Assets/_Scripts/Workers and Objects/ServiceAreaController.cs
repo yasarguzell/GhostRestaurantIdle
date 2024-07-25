@@ -24,6 +24,7 @@ public class ServiceAreaController : MonoBehaviour
     [SerializeField] private Transform[] _tableLocations;
     [SerializeField] private Transform _workerSpawnLocation;
     [SerializeField] private Transform _customerSpawnLocation;
+    SODataHolder sODataHolder;
 
     // Spawned objects
     private List<Table> _tables;
@@ -34,6 +35,23 @@ public class ServiceAreaController : MonoBehaviour
     {
         _tables = new List<Table>();
         _serviceWorkers = new List<ServiceWorker>();
+        sODataHolder= GetData();
+    }   void Start()
+    {
+        CoreGameSignals.Instance.onDataChanged+=onDataChanged;
+    }
+
+    private void onDataChanged()
+    {
+        foreach(ServiceWorker serviceWorker in _serviceWorkers)
+        {
+            serviceWorker.UpdateDatas(_initialMovementSpeed*sODataHolder.dataHolder.waitersSpeedUpgrade);
+        }
+    }
+
+    SODataHolder GetData()
+    {
+        return Resources.Load<SODataHolder>("Datas/SODataHolder");
     }
 
     [ContextMenu("Spawn table")]
@@ -54,7 +72,7 @@ public class ServiceAreaController : MonoBehaviour
             return;
         ServiceWorker worker = Instantiate(_serviceWorker, _workerSpawnLocation).GetComponent<ServiceWorker>();
         _serviceWorkers.Add(worker);
-        worker.Init(this, _initialMovementSpeed, _idlePosition.position, _betweenAreasController);
+        worker.Init(this, _initialMovementSpeed*sODataHolder.dataHolder.waitersSpeedUpgrade, _idlePosition.position, _betweenAreasController);
       
     }
 

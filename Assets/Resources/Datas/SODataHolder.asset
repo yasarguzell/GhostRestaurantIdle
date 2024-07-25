@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: SODataHolder
   m_EditorClassIdentifier: 
   dataHolder:
-    valueX: 495
-    valueY: 0
-    valueZ: 0
-    valueA: 1600
-    valueB: 2940
+    chefCookSpeedUpgrade: 1
+    waitersSpeedUpgrade: 1
+    washingWorkerSpeed: 1
+    upgradeWashSpeed: 1
+    chefMovementSpeed: 1

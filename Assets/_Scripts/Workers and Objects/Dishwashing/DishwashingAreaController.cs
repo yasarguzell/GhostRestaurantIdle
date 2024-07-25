@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -16,7 +17,7 @@ public class DishwashingAreaController : MonoBehaviour
     [SerializeField] private GameObject _dishwashingWorker;
     [SerializeField] private Transform[] _dishwashingMachineLocations;
     [SerializeField] private Transform _workerSpawnLocation;
-
+    SODataHolder sODataHolder;
     // Spawned objects
     private List<DishwashingMachine> _dishwashingMachines;
     private List<DishwashingWorker> _washingWorkers;
@@ -26,6 +27,26 @@ public class DishwashingAreaController : MonoBehaviour
     {
         _dishwashingMachines = new List<DishwashingMachine>();
         _washingWorkers = new List<DishwashingWorker>();
+        sODataHolder= GetData();
+    }
+    void Start()
+    {
+        CoreGameSignals.Instance.onDataChanged+=onDataChanged;
+    }
+
+    private void onDataChanged()
+    {
+        Debug.Log(_initialMovementSpeed*sODataHolder.dataHolder.washingWorkerSpeed+"Test1");
+        Debug.Log(_initialWashingTime*sODataHolder.dataHolder.upgradeWashSpeed+"Test2");
+        foreach(DishwashingWorker dishwashingWorker in _washingWorkers)
+        {
+         dishwashingWorker.UpdateDatas( _initialMovementSpeed*sODataHolder.dataHolder.washingWorkerSpeed,  _initialWashingTime*sODataHolder.dataHolder.upgradeWashSpeed);
+        }
+    }
+
+    SODataHolder GetData()
+    {
+        return Resources.Load<SODataHolder>("Datas/SODataHolder");
     }
 
     [ContextMenu("Spawn Machine")]
@@ -45,7 +66,9 @@ public class DishwashingAreaController : MonoBehaviour
             return;
         DishwashingWorker worker = Instantiate(_dishwashingWorker, _workerSpawnLocation).GetComponent<DishwashingWorker>();
         _washingWorkers.Add(worker);
-        worker.Init(this, _initialWashingTime, _initialMovementSpeed, _idlePosition.position, _betweenAreasController);
+        
+
+        worker.Init(this, _initialWashingTime*sODataHolder.dataHolder.upgradeWashSpeed, _initialMovementSpeed*sODataHolder.dataHolder.washingWorkerSpeed, _idlePosition.position, _betweenAreasController);
     }
 
     public bool TryGetAvailableDishwashingMachine(out DishwashingMachine machine)

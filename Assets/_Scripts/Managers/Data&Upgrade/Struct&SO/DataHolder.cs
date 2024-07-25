@@ -5,9 +5,9 @@ public struct DataHolder
 {
     public float chefCookSpeedUpgrade;
     public float waitersSpeedUpgrade;
-    public float valueZ;
-    public float valueA;
-    public float valueB;
+    public float washingWorkerSpeed;
+    public float upgradeWashSpeed;
+    public float chefMovementSpeed;
 
 
 

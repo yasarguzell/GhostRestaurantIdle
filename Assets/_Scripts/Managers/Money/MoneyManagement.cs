@@ -5,12 +5,14 @@ using UnityEngine;
 
 public class MoneyManagement : MonoBehaviour
 {
+    public static MoneyManagement Instance { get; set; }
     public TMP_Text booCoinCountText;
 
     private SOMoneyData moneyDataObj;
 
     private void Awake()
     {
+        Instance = this;
         moneyDataObj = Resources.Load<SOMoneyData>("Datas/MoneyData");
         booCoinCountText.text = FormatMoney(moneyDataObj.moneyData.booCoin);
     }

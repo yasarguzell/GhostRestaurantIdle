@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Logger : MonoBehaviour
@@ -7,6 +5,7 @@ public class Logger : MonoBehaviour
     // npc player vb controllerı
     [SerializeField] MoneyManagement moneyManagement;
     SODataHolder soDataHolder;
+    float testV=1;
     //float test=5;
 
     void Awake()
@@ -23,13 +22,15 @@ public class Logger : MonoBehaviour
     {
         if (soDataHolder != null)
         {
-           // Debug.Log("valueX: " + soDataHolder.dataHolder.chefCookSpeedUpgrade);
-            //Debug.Log("valueY: " + soDataHolder.dataHolder.waitersSpeedUpgrade);
-           // Debug.Log("valueZ: " + soDataHolder.dataHolder.valueZ);
-            //Debug.Log("valueA: " + soDataHolder.dataHolder.valueA);
-            //Debug.Log("valueB: " + soDataHolder.dataHolder.valueB);
+            Debug.Log("chefCookSpeedUpgrade: " + soDataHolder.dataHolder.chefCookSpeedUpgrade);
+            Debug.Log("waitersSpeedUpgrade: " + soDataHolder.dataHolder.waitersSpeedUpgrade);
+            Debug.Log("washingWorkerSpeed: " + soDataHolder.dataHolder.washingWorkerSpeed);
+            Debug.Log("upgradeWashSpeed: " + soDataHolder.dataHolder.upgradeWashSpeed);
+            Debug.Log("chefMovementSpeed: " + soDataHolder.dataHolder.chefMovementSpeed);
         }
-       //Debug.Log(test2);
+        testV=soDataHolder.dataHolder.chefCookSpeedUpgrade*5f;
+        Debug.Log(testV);
+      
     }
 
     public void EarnTestMoney()

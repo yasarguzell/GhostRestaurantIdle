@@ -1,13 +1,9 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class DataManager : MonoBehaviour
 {
     // update ref update manager
     SODataHolder soDataHolder;
-    SOMoneyData soMoneyData;
 
 
     void Awake()
@@ -50,27 +46,32 @@ public class DataManager : MonoBehaviour
 
     private void onGetDataB(float value)
     {
-        soDataHolder.dataHolder.valueB += value;        
+        soDataHolder.dataHolder.chefMovementSpeed += value;  
+        CoreGameSignals.Instance.onDataChanged?.Invoke();      
     }
 
     private void onGetDataA(float value)
     {
-        soDataHolder.dataHolder.valueA += value;
+        soDataHolder.dataHolder.upgradeWashSpeed += value;
+         CoreGameSignals.Instance.onDataChanged?.Invoke();  
     }
 
     private void onGetDataZ(float value)
     {
-        soDataHolder.dataHolder.valueZ += value;
+        soDataHolder.dataHolder.washingWorkerSpeed += value;
+         CoreGameSignals.Instance.onDataChanged?.Invoke();  
     }
 
     private void onGetDataY(float value)
     {
          soDataHolder.dataHolder.waitersSpeedUpgrade += value;
+          CoreGameSignals.Instance.onDataChanged?.Invoke();  
     }
 
     private void onGetDataX(float value)
     {
          soDataHolder.dataHolder.chefCookSpeedUpgrade += value;
+        CoreGameSignals.Instance.onDataChanged?.Invoke();  
     }
 
 

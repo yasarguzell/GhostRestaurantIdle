@@ -10,6 +10,7 @@ public class CoreGameSignals : MonoBehaviour
     public UnityAction<float> onDataUpgradeWaitersSpeed=delegate{};
     public UnityAction<float> onDataUpgradeWashingWorkerSpeed=delegate{};
     public UnityAction<float> onDataUpgradeWashSpeed=delegate{};
+    public UnityAction onDataChanged; 
 
     #endregion
     public static CoreGameSignals Instance { get; private set; }

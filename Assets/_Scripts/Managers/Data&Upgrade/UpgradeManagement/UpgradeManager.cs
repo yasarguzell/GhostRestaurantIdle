@@ -61,7 +61,7 @@ public class UpgradeManager : MonoBehaviour
     }
 
     #region  Upgrade Button Methods
-    public void UpgradeWaitersSpeed()  // sorunsuz text list 0
+    public void UpgradeWaitersSpeed()  //  text list 0
     {
         if (!upgradeCost.CostWaitersUpgradeSpeed.ContainsKey(upgradeCost.CostWaitersUpgradeIndex)) return;
         costWaitersUpgradeSpeed = (long)upgradeCost.CostWaitersUpgradeSpeed[upgradeCost.CostWaitersUpgradeIndex];
@@ -90,7 +90,7 @@ public class UpgradeManager : MonoBehaviour
         }
     }
 
-    public void UpgradeChefCookSpeed() // sorunsuz text list 3
+    public void UpgradeChefCookSpeed() //  text list 3
     {
         if (!upgradeCost.CostChefCookSpeedUpgrade.ContainsKey(upgradeCost.CostChefCookSpeedIndex)) return;
         costChefUpgradeCookSpeed = (long)upgradeCost.CostChefCookSpeedUpgrade[upgradeCost.CostChefCookSpeedIndex];
@@ -119,7 +119,7 @@ public class UpgradeManager : MonoBehaviour
         }
     }
 
-    public void UpgradeChefHire()  // sorunsuz çalışıyor text list 5
+    public void UpgradeChefHire()  //  text list 5
     {
         if (!upgradeCost.CostHireChef.ContainsKey(upgradeCost.CostHireChefIndex)) return;
 
@@ -147,7 +147,7 @@ public class UpgradeManager : MonoBehaviour
         }
     }
 
-    public void UpgradeWashingWorkerSpeed() // text list 6 sorunsuz
+    public void UpgradeWashingWorkerSpeed() // text list 6 
     {
         if (!upgradeCost.CostValueUpgradeSpeedWashingWorker.ContainsKey(upgradeCost.CostValueUpgradeSpeedWashingWorkerIndex)) return;
         costUpgradeMSWashingWorker = (long)upgradeCost.CostValueUpgradeSpeedWashingWorker[upgradeCost.CostValueUpgradeSpeedWashingWorkerIndex];
@@ -176,7 +176,7 @@ public class UpgradeManager : MonoBehaviour
         }
     }
 
-    public void UpgradeWashingDishwasherSpeed() // text list 7 sorunsuz
+    public void UpgradeWashingDishwasherSpeed() // text list 7
     {
         if (!upgradeCost.CostValueUpgradeSpeedWashingDishWasher.ContainsKey(upgradeCost.CostValueUpgradeSpeedWashingDishWasherIndex)) return;
         costUpgradeWashingDishwasher = (long)upgradeCost.CostValueUpgradeSpeedWashingDishWasher[upgradeCost.CostValueUpgradeSpeedWashingDishWasherIndex];
@@ -204,7 +204,7 @@ public class UpgradeManager : MonoBehaviour
             Debug.Log("Not enough BooCoins!");
         }
     }
-    public void UpgradeDishwasherRoom() // text list 8 sorunsuz
+    public void UpgradeDishwasherRoom() // text list 8 
     {
         if (!upgradeCost.CostUpgradeDishwasherRoom.ContainsKey(upgradeCost.CostUpgradeDishwasherRoomIndex)) return;
 
@@ -231,7 +231,7 @@ public class UpgradeManager : MonoBehaviour
             Debug.Log("Yeterli BooCoin yok!");
         }
     }
-    public void UpgradeWaitersHire() // text list 1 sorunsuz
+    public void UpgradeWaitersHire() // text list 1 
     {
         if (!upgradeCost.CostHiringWaiters.ContainsKey(upgradeCost.CostHiringWaitersIndex)) return;
         costHireWaiters = (long)upgradeCost.CostHiringWaiters[upgradeCost.CostHiringWaitersIndex];
@@ -287,7 +287,7 @@ public class UpgradeManager : MonoBehaviour
             // sinyal
         }
     }
-    public void UpgradeChefMovementSpeed() // text list 4 sorun yok
+    public void UpgradeChefMovementSpeed() // text list 4 
     {
         if (!upgradeCost.CostValuesUpgradeChefMoveSpeed.ContainsKey(upgradeCost.CostUpgradeCMoveSpeedIndex)) return;
         costUpgradeChefUpgradeMoveSpeed = (long)upgradeCost.CostValuesUpgradeChefMoveSpeed[upgradeCost.CostUpgradeCMoveSpeedIndex];
