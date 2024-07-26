@@ -5306,8 +5306,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d374119a823f5b94493347a5ae964460, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  restaurants:
-  - {fileID: 0}
 --- !u!1 &1153940266 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3623959707618345757, guid: 9a0bc071413779f408e34cafb149b2c8, type: 3}
@@ -8121,8 +8119,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cameraSpeed: 21.5
   size: 23
-  dragSpeed: 2
-  currentRestaurant: 0
 --- !u!1 &1826735660
 GameObject:
   m_ObjectHideFlags: 0
