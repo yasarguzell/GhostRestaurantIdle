@@ -32,6 +32,8 @@ public class KitchenAreaController : MonoBehaviour
     void Start()
     {
         CoreGameSignals.Instance.onDataChanged+=onDataChanged;
+        SpawnCooktop();
+        SpawnCookWorker();
     }
 
     private void onDataChanged()

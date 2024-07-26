@@ -40,6 +40,8 @@ public class ServiceAreaController : MonoBehaviour
     }   void Start()
     {
         CoreGameSignals.Instance.onDataChanged+=onDataChanged;
+        SpawnTable();
+        SpawnServiceWorker();
     }
 
     private void onDataChanged()

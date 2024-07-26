@@ -32,6 +32,8 @@ public class DishwashingAreaController : MonoBehaviour
     void Start()
     {
         CoreGameSignals.Instance.onDataChanged+=onDataChanged;
+        SpawnDishwashingMachine();
+        SpawnWashingWorker();
     }
 
     private void onDataChanged()
