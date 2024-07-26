@@ -10,6 +10,7 @@ public class ServiceWorker : MonoBehaviour
     [Header("References")]
     public BetweenAreasController _betweenAreasController;
     public WorkerState WorkerState;
+    public Transform HandPosition;
     public Image TimerImage;
     private ServiceAreaController _areaController;
     private Vector3 _idlePosition;
@@ -32,13 +33,12 @@ public class ServiceWorker : MonoBehaviour
         _betweenAreasController = betweenAreasController;
     }
 
-    public IEnumerator GetFoodCoroutine(Vector3 customerPosition, Customer customer)
+    public IEnumerator GetFoodCoroutine(Vector3 customerPosition, Customer customer, Vector3 platePosition, Table table, int seatIndex)
     {
         if (_moveToIdleCoroutine != null)
             StopCoroutine(_moveToIdleCoroutine);
         // find tray with food
         ReadyFoodTray tray = null;
-        Debug.Log("Bieinci");
         while (!_betweenAreasController.TryGetReadyFood(out tray))
         {
             customer.RestartOrder();
@@ -47,21 +47,30 @@ public class ServiceWorker : MonoBehaviour
         }
 
         //yield return StartCoroutine(FindReadyFoodCoroutine((foundTray) => tray = foundTray));
+        var plate = tray.PlateOnIt;
 
         // Move to tray
         yield return StartCoroutine(MoveToPosition(tray.transform.position));
-        Debug.Log("ikinci");
         // get food
+
+        // Move dish to hand and set as child of it 
+        plate.transform.parent = HandPosition;
+        yield return StartCoroutine(plate.MoveToPosition(HandPosition.position, 0.5f));
+
         tray.IsInUse = false;
         tray.IsSelectedByServer = false;
+        tray.PlateOnIt = null;
 
         // move back to customer
         yield return StartCoroutine(MoveToPosition(customerPosition));
+        // drop food on table
+        yield return StartCoroutine(plate.MoveToPosition(platePosition, 0.5f));
+        plate.transform.parent = null;
 
-        Debug.Log("ucunucu");
+        table.Plates[seatIndex] = plate;
+
         //yield return StartCoroutine(MoveToPosition(_idlePosition));
         // drop food
-        Debug.Log("dort");
         _moveToIdleCoroutine = StartCoroutine("MoveToIdlePos");
         WorkerState = WorkerState.idle;
 
@@ -79,14 +88,19 @@ public class ServiceWorker : MonoBehaviour
         // Move to seat
         yield return StartCoroutine(MoveToPosition(seatPosition));
         MoneyManagement.Instance.UpdateBooCoin(150);
-
+        Plate plate = table.Plates[seatIndex];
+        yield return StartCoroutine(plate.MoveToPosition(HandPosition.position, 0.5f));
+        plate.transform.parent = HandPosition;
+        table.Plates[seatIndex] = null;
         //!!!!
         // take dish
         table.GetCustomer(seatIndex);// call for new customer on table
 
         // drop the dish
-        yield return StartCoroutine(MoveToPosition(_betweenAreasController._dirtyDishDropTray.transform.position));
-        _betweenAreasController._dirtyDishDropTray.MoveDirtyDish();
+        yield return StartCoroutine(MoveToPosition(_betweenAreasController._dirtyDishDropTray._workingSpot.position));
+        yield return StartCoroutine(plate.MoveToPosition(_betweenAreasController._dirtyDishDropTray.ConveyerStart.position, 1));
+        plate.transform.parent = null;
+        _betweenAreasController._dirtyDishDropTray.MoveDirtyDish(plate);
         _moveToIdleCoroutine = StartCoroutine("MoveToIdlePos");
         WorkerState = WorkerState.idle;
 
@@ -113,10 +127,10 @@ public class ServiceWorker : MonoBehaviour
             yield return null;
         }
     }
-     public void UpdateDatas(float amount)
+    public void UpdateDatas(float amount)
     {
-        _navMeshAgent.speed=amount;
-        
+        _navMeshAgent.speed = amount;
+
     }
 
 

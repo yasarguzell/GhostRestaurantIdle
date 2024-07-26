@@ -9,6 +9,7 @@ public class CookWorker : MonoBehaviour
 {
     [Header("References")]
     public BetweenAreasController _betweenAreasController;
+    public Transform HandPosition;
     public WorkerState WorkerState;
     public Image TimerImage;
     private KitchenAreaController _areaController;
@@ -50,8 +51,15 @@ public class CookWorker : MonoBehaviour
         // Move to dish
         yield return StartCoroutine(MoveToPosition(cleanDishPosition));
 
+        var plate = cleanDishesTray.PlateOnIt;
+
+        // Move dish to hand and set as child of it 
+        yield return StartCoroutine(plate.MoveToPosition(HandPosition.position, 0.5f));
+        plate.transform.parent = HandPosition;
+
         // Free tray
         cleanDishesTray.IsInUse = false;
+        cleanDishesTray.PlateOnIt = null;
 
         // Find cooktop
         Cooktop cooktop = null;
@@ -73,12 +81,16 @@ public class CookWorker : MonoBehaviour
         // Move to ready food tray
         yield return StartCoroutine(MoveToPosition(tray.transform.position));
 
+        yield return StartCoroutine(plate.MoveToPosition(tray.transform.TransformPoint(Vector3.up * 0.5f), 0.5f));
+        plate.transform.parent = null;
+        tray.PlateOnIt = plate;
+
         tray.IsInUse = true;
-        tray.IsSelectedByCook= false;
+        tray.IsSelectedByCook = false;
 
         // Drop food!!!!!!!!!!!!
         WorkerState = WorkerState.idle;
-        yield return StartCoroutine(MoveToPosition(_idlePosition));
+        //yield return StartCoroutine(MoveToPosition(_idlePosition));
     }
 
     private IEnumerator MoveToPosition(Vector3 targetPosition)
@@ -124,10 +136,10 @@ public class CookWorker : MonoBehaviour
         }
         callback(cooktop);
     }
-     public void UpdateDatas(float amount,float value)
+    public void UpdateDatas(float amount, float value)
     {
-        _navMeshAgent.speed=amount;
-        _cookingTime=value;
+        _navMeshAgent.speed = amount;
+        _cookingTime = value;
     }
 
 }

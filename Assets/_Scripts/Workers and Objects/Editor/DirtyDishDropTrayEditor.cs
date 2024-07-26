@@ -11,9 +11,5 @@ public class DirtyDishDropTrayEditor : Editor
         DrawDefaultInspector();
 
         DirtyDishDropTray myScript = (DirtyDishDropTray)target;
-        if (GUILayout.Button("Move Dirty Dish"))
-        {
-            myScript.MoveDirtyDish();
-        }
     }
 }

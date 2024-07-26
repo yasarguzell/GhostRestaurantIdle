@@ -6,6 +6,7 @@ public class CleanDishesTray : MonoBehaviour
 {
     public bool IsInUse = false;
     public KitchenAreaController _areaController;
+    public Plate PlateOnIt;
 
     [ContextMenu("Add clean dish")]
     public void AddCleanDish()

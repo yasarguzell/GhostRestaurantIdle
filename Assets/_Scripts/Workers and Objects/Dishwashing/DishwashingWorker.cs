@@ -9,6 +9,7 @@ public class DishwashingWorker : MonoBehaviour
 {
     [Header("References")]
     public BetweenAreasController _betweenAreasController;
+    public Transform HandPosition;
     public WorkerState WorkerState;
     public Image TimerImage;
     private DishwashingAreaController _areaController;
@@ -56,8 +57,15 @@ public class DishwashingWorker : MonoBehaviour
         // Move to dish
         yield return StartCoroutine(MoveToPosition(dirtyDishPosition));
 
+        var plate = dirtyDishesTray.PlateOnIt;
+
+        // Move dish to hand and set as child of it 
+        yield return StartCoroutine(plate.MoveToPosition(HandPosition.position, 0.5f));
+        plate.transform.parent = HandPosition;
+
         // Free tray
         dirtyDishesTray.IsInUse = false;
+        dirtyDishesTray.PlateOnIt = null;
 
         // Find dishwasher
         DishwashingMachine machine = null;
@@ -80,6 +88,12 @@ public class DishwashingWorker : MonoBehaviour
         yield return StartCoroutine(MoveToPosition(tray.transform.position));
 
         // Drop dish!!!!!!!!!!!!
+
+        // Move dish to tray and set child of global 
+        yield return StartCoroutine(plate.MoveToPosition(tray.transform.TransformPoint(Vector3.up * 0.5f), 0.5f));
+        plate.transform.parent = null;
+        tray.PlateOnIt = plate;
+
         tray.AddCleanDish();
         WorkerState = WorkerState.idle;
         yield return StartCoroutine(MoveToPosition(_idlePosition));
@@ -115,10 +129,10 @@ public class DishwashingWorker : MonoBehaviour
         callback(tray);
     }
 
-    public void UpdateDatas(float amount,float value)
+    public void UpdateDatas(float amount, float value)
     {
-        _navMeshAgent.speed=amount;
-        _cleaningTime=value;
+        _navMeshAgent.speed = amount;
+        _cleaningTime = value;
     }
 
 }

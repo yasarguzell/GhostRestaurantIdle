@@ -8,6 +8,8 @@ public class Table : MonoBehaviour
 {
     public int _seatAmount;
     [SerializeField] private Transform[] _seatPositions;
+    [SerializeField] private Transform[] _platePositions;
+    public Plate[] Plates;
     private ServiceAreaController _serviceAreaController;
     [SerializeField] private Transform _getOutPosition;
     public GameObject _seat;
@@ -16,6 +18,7 @@ public class Table : MonoBehaviour
     public /**/ bool isThereFreeTable;
     private void Start()
     {
+        Plates = new Plate[4];
         /*
                 chairs = new List<CustomerTableChair>();
                 for (int i = 0; i < this.transform.childCount; i++)
@@ -95,5 +98,10 @@ public class Table : MonoBehaviour
     public void GetCustomer(int seatIndex)
     {
         _serviceAreaController.SpawnCustomer(_seatPositions[seatIndex].transform.position, this, seatIndex);
+    }
+
+    public Vector3 GetPlatePosition(int seatIndex)
+    {
+        return _platePositions[seatIndex].position;
     }
 }

@@ -253,6 +253,12 @@ MonoBehaviour:
   - {fileID: 3230071410577742505}
   - {fileID: 2152931857097188568}
   - {fileID: 3096388463036735835}
+  _platePositions:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  _plates: []
   _getOutPosition: {fileID: 0}
   _seat: {fileID: 3190068049200775504, guid: 2743b281eb41e4fceb7a1a243e821e55, type: 3}
   chairs: []
