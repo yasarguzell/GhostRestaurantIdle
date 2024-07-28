@@ -270,7 +270,7 @@ Animator:
   m_GameObject: {fileID: 7651963459952646031}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 20a010b4312475848bb77db3a6c4c729, type: 2}
+  m_Controller: {fileID: 9100000, guid: fb211a8f05e41084c837dee3f0640435, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -369,6 +369,7 @@ MonoBehaviour:
   WorkerState: 0
   HandPosition: {fileID: 3095826941411760499}
   TimerImage: {fileID: 6208205455887629910}
+  _animator: {fileID: 396265379621289228}
 --- !u!1001 &31554907563496040
 PrefabInstance:
   m_ObjectHideFlags: 0

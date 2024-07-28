@@ -16,6 +16,7 @@ public class ServiceWorker : MonoBehaviour
     private Vector3 _idlePosition;
     private NavMeshAgent _navMeshAgent;
     private Coroutine _moveToIdleCoroutine;
+    public Animator _animator;
 
 
     private void Awake()
@@ -55,7 +56,7 @@ public class ServiceWorker : MonoBehaviour
 
         // Move dish to hand and set as child of it 
         plate.transform.parent = HandPosition;
-        yield return StartCoroutine(plate.MoveToPosition(HandPosition.position, 0.5f));
+        yield return StartCoroutine(plate.MoveToLocalPosition(HandPosition.position, 0.5f));
 
         tray.IsInUse = false;
         tray.IsSelectedByServer = false;
@@ -89,8 +90,8 @@ public class ServiceWorker : MonoBehaviour
         yield return StartCoroutine(MoveToPosition(seatPosition));
         MoneyManagement.Instance.UpdateBooCoin(150);
         Plate plate = table.Plates[seatIndex];
-        yield return StartCoroutine(plate.MoveToPosition(HandPosition.position, 0.5f));
         plate.transform.parent = HandPosition;
+        yield return StartCoroutine(plate.MoveToLocalPosition(HandPosition.position, 0.5f));
         table.Plates[seatIndex] = null;
         //!!!!
         // take dish
@@ -120,12 +121,16 @@ public class ServiceWorker : MonoBehaviour
 
     private IEnumerator MoveToPosition(Vector3 targetPosition)
     {
+        _animator.SetBool("walking", true);
+
         _navMeshAgent.SetDestination(targetPosition);
 
         while (_navMeshAgent.pathPending || _navMeshAgent.remainingDistance > _navMeshAgent.stoppingDistance)
         {
             yield return null;
         }
+        _animator.SetBool("walking", false);
+
     }
     public void UpdateDatas(float amount)
     {

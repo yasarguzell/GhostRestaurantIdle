@@ -1370,6 +1370,14 @@ PrefabInstance:
       propertyPath: m_ConstrainProportionsScale
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 754261382250763519, guid: 06e5d7e528ff7ac4db4eb66e5865813a, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -4.28
+      objectReference: {fileID: 0}
+    - target: {fileID: 754261382250763519, guid: 06e5d7e528ff7ac4db4eb66e5865813a, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -7.91
+      objectReference: {fileID: 0}
     - target: {fileID: 815016325436611604, guid: 06e5d7e528ff7ac4db4eb66e5865813a, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
@@ -1412,7 +1420,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1173326060418887375, guid: 06e5d7e528ff7ac4db4eb66e5865813a, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 11.1
+      value: 6.23
       objectReference: {fileID: 0}
     - target: {fileID: 1256684085550464160, guid: 06e5d7e528ff7ac4db4eb66e5865813a, type: 3}
       propertyPath: m_LocalScale.x
@@ -1634,6 +1642,14 @@ PrefabInstance:
       propertyPath: m_LocalPosition.z
       value: 6.5
       objectReference: {fileID: 0}
+    - target: {fileID: 4708286760372621976, guid: 06e5d7e528ff7ac4db4eb66e5865813a, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 3.21
+      objectReference: {fileID: 0}
+    - target: {fileID: 4708286760372621976, guid: 06e5d7e528ff7ac4db4eb66e5865813a, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.35
+      objectReference: {fileID: 0}
     - target: {fileID: 4740258016529216694, guid: 06e5d7e528ff7ac4db4eb66e5865813a, type: 3}
       propertyPath: m_LocalScale.x
       value: 1.7
@@ -1811,8 +1827,12 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6045100842835750592, guid: 06e5d7e528ff7ac4db4eb66e5865813a, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -6.21
+      objectReference: {fileID: 0}
+    - target: {fileID: 6045100842835750592, guid: 06e5d7e528ff7ac4db4eb66e5865813a, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -23.26
+      value: -21.49
       objectReference: {fileID: 0}
     - target: {fileID: 6101017010002977548, guid: 06e5d7e528ff7ac4db4eb66e5865813a, type: 3}
       propertyPath: m_LocalScale.x
@@ -1863,8 +1883,12 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7324026622388501391, guid: 06e5d7e528ff7ac4db4eb66e5865813a, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 5.35
+      objectReference: {fileID: 0}
+    - target: {fileID: 7324026622388501391, guid: 06e5d7e528ff7ac4db4eb66e5865813a, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -23.93
+      value: -16.12
       objectReference: {fileID: 0}
     - target: {fileID: 7443835086750126620, guid: 06e5d7e528ff7ac4db4eb66e5865813a, type: 3}
       propertyPath: m_Layer
@@ -1977,6 +2001,10 @@ PrefabInstance:
     - target: {fileID: 8970200666164282042, guid: 06e5d7e528ff7ac4db4eb66e5865813a, type: 3}
       propertyPath: m_ConstrainProportionsScale
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9115918792380004702, guid: 06e5d7e528ff7ac4db4eb66e5865813a, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 5.27
       objectReference: {fileID: 0}
     - target: {fileID: 9115918792380004702, guid: 06e5d7e528ff7ac4db4eb66e5865813a, type: 3}
       propertyPath: m_LocalPosition.z
@@ -6226,6 +6254,10 @@ PrefabInstance:
     - target: {fileID: 895080562314674749, guid: 9a0bc071413779f408e34cafb149b2c8, type: 3}
       propertyPath: m_Name
       value: MainCanvas
+      objectReference: {fileID: 0}
+    - target: {fileID: 1833747242668387394, guid: 9a0bc071413779f408e34cafb149b2c8, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2589726705392728051, guid: 9a0bc071413779f408e34cafb149b2c8, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target

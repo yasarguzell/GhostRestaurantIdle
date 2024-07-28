@@ -9,6 +9,11 @@ public class Plate : MonoBehaviour
     {
         yield return transform.DOMove(targetPosition, time).WaitForCompletion();
     }
+    public IEnumerator MoveToLocalPosition(Vector3 targetPosition, float time)
+    {
+        yield return transform.DOLocalMove(Vector3.zero, time).WaitForCompletion();
+    }
+
 
     public void ChangePlateState(PlateState state)
     {

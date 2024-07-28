@@ -16,6 +16,7 @@ public class CookWorker : MonoBehaviour
     [SerializeField] private float _cookingTime;
     private Vector3 _idlePosition;
     private NavMeshAgent _navMeshAgent;
+    public Animator _animator;
 
 
     private void Awake()
@@ -54,8 +55,8 @@ public class CookWorker : MonoBehaviour
         var plate = cleanDishesTray.PlateOnIt;
 
         // Move dish to hand and set as child of it 
-        yield return StartCoroutine(plate.MoveToPosition(HandPosition.position, 0.5f));
         plate.transform.parent = HandPosition;
+        yield return StartCoroutine(plate.MoveToLocalPosition(HandPosition.position, 0.5f));
 
         // Free tray
         cleanDishesTray.IsInUse = false;
@@ -95,12 +96,16 @@ public class CookWorker : MonoBehaviour
 
     private IEnumerator MoveToPosition(Vector3 targetPosition)
     {
+        _animator.SetBool("walking", true);
+
         _navMeshAgent.SetDestination(targetPosition);
 
         while (_navMeshAgent.pathPending || _navMeshAgent.remainingDistance > _navMeshAgent.stoppingDistance)
         {
             yield return null;
         }
+        _animator.SetBool("walking", false);
+
     }
 
     private IEnumerator Cook()
@@ -108,6 +113,8 @@ public class CookWorker : MonoBehaviour
         float cookingTime = _cookingTime;
         float elapsedTime = 0;
         TimerImage.fillAmount = 0;
+        _animator.SetBool("working", true);
+
         while (elapsedTime < cookingTime)
         {
             elapsedTime += Time.deltaTime;
@@ -115,6 +122,8 @@ public class CookWorker : MonoBehaviour
             yield return null;
         }
         TimerImage.fillAmount = 0;
+        _animator.SetBool("working", false);
+
     }
 
     private IEnumerator FindReadyFoodTrayCoroutine(System.Action<ReadyFoodTray> callback)

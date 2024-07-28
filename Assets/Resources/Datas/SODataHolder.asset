@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: SODataHolder
   m_EditorClassIdentifier: 
   dataHolder:
-    chefCookSpeedUpgrade: 1
-    waitersSpeedUpgrade: 1
-    washingWorkerSpeed: 1
-    upgradeWashSpeed: 1
+    chefCookSpeedUpgrade: 0.75
+    waitersSpeedUpgrade: 1.7
+    washingWorkerSpeed: 1.7
+    upgradeWashSpeed: 0.50000006
     chefMovementSpeed: 1

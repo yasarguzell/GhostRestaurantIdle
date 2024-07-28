@@ -16,6 +16,7 @@ public class DishwashingWorker : MonoBehaviour
     [SerializeField] private float _cleaningTime;
     private Vector3 _idlePosition;
     private NavMeshAgent _navMeshAgent;
+    public Animator _animator;
 
 
     private void Awake()
@@ -38,6 +39,7 @@ public class DishwashingWorker : MonoBehaviour
         float cleaningTime = _cleaningTime;
         float elapsedTime = 0;
         TimerImage.fillAmount = 0;
+        _animator.SetBool("working", true);
         while (elapsedTime < cleaningTime)
         {
             elapsedTime += Time.deltaTime;
@@ -45,6 +47,8 @@ public class DishwashingWorker : MonoBehaviour
             yield return null;
         }
         TimerImage.fillAmount = 0;
+        _animator.SetBool("working", false);
+
     }
 
     public void StartMission(Vector3 dirtyDishPosition, DirtyDishesTray dirtyDishesTray)
@@ -60,8 +64,8 @@ public class DishwashingWorker : MonoBehaviour
         var plate = dirtyDishesTray.PlateOnIt;
 
         // Move dish to hand and set as child of it 
-        yield return StartCoroutine(plate.MoveToPosition(HandPosition.position, 0.5f));
         plate.transform.parent = HandPosition;
+        yield return StartCoroutine(plate.MoveToLocalPosition(HandPosition.position, 0.5f));
 
         // Free tray
         dirtyDishesTray.IsInUse = false;
@@ -102,11 +106,14 @@ public class DishwashingWorker : MonoBehaviour
     private IEnumerator MoveToPosition(Vector3 targetPosition)
     {
         _navMeshAgent.SetDestination(targetPosition);
+        _animator.SetBool("walking", true);
 
         while (_navMeshAgent.pathPending || _navMeshAgent.remainingDistance > _navMeshAgent.stoppingDistance)
         {
             yield return null;
         }
+        _animator.SetBool("walking", false);
+
     }
 
     private IEnumerator FindDishwasherCoroutine(System.Action<DishwashingMachine> callback)
