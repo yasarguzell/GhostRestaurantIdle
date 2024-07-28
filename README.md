@@ -20,7 +20,7 @@
 * [Elifsu KARAHAN](https://www.linkedin.com/in/elifsu-karahan-8951a031a/)
 
 ## KAYNAKLAR
-[Drive](https://drive.google.com/drive/folders/1JSrT11BQ-3ySIqz5u4s7Fx5fgxn2ge19)
+[Drive](https://drive.google.com/drive/folders/1LZxcv5yBleKKZObcxxf7eAA0FWS1AYLA?usp=sharing)
 
 ## GELİŞTİRME SÜRECİ
 - Oyunun Adı: Boo Land Cafe Idle
@@ -64,10 +64,12 @@ The player can upgrade the employees and the rooms using the same user interface
 Upgrading waiters’ movement speed
 Hiring one more waiter
 Increasing the table sizes 
+
 #### Kitchen:
 Upgrading chefs’ cooking speed
 Upgrading chefs’ movement speed
 Hiring one more chef
+
 #### Scullery:
 Upgrading scullions’ movement speed
 Upgrading the washing speed of the dishwasher
@@ -78,10 +80,13 @@ Figure 1. Upgrade UI
 ### Unlocking New Floors
 After reaching some point in the game, the player can open the upper floor of the Boo Land Café building. To unlock the first floor, the player must pay a hefty sum and get the minimum level, say, 15, in each room. (The requirements for the second floor might be doubled.)
 The player must start from scratch in this new place, similar to the first floor. The UI for the upgrade screen will stay the same. The floors' interior design will be different, and the starting prices of the food served here will be higher than on the previous floor.
+
 ### Characters
 Even though they are ghosts, the citizens of Boo Land are called Boos (Boo in singular form) instead of ghosts.
+
 ### Employees
 There are three types of employees: 
+
 #### Waiter Boo – Lounge 
 These employees are expected to serve customers and collect dishes from the Lounge. They carry the collected dirty dishes to the counter between the Lounge and the Scullery.  We see them mainly in the Lounge.
 
