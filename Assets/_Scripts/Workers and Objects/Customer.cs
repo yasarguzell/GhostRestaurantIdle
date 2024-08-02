@@ -58,7 +58,7 @@ public class Customer : MonoBehaviour
         yield return StartCoroutine(worker.GetFoodCoroutine(transform.position, this, tableReferance.GetPlatePosition(seatIndex), tableReferance, seatIndex));
 
         yield return StartCoroutine(Eat());
-
+        tableReferance.Plates[seatIndex].ChangePlateState(PlateState.dirty);
         // delete food and spawn dirty dish
 
         // call for dirty dish pickup

@@ -83,6 +83,7 @@ public class ServiceAreaController : MonoBehaviour
     {
         // Spawn customer
         Customer customer = Instantiate(_customer, _customerSpawnPoint).GetComponent<Customer>();
+        NavMeshSurfaceController.Instance.UpdateNavMesh();
         // Initialize the customer
         customer.Init(this, _initialEatingTime, _initialMovementSpeed);
         customer.StartEatingMission(seatPosition, _getOutPosition.position, tableReference, seatIndex,.1f);

@@ -18,7 +18,7 @@ public class CameraSwipeController : MonoBehaviour
         currentRestaurant = 0;
         mapIndex = 0;
         float aspectRatio = (float)Screen.width / (float)Screen.height;
-        Camera.main.orthographicSize = size / (2.0f * aspectRatio);
+        //Camera.main.orthographicSize = size / (2.0f * aspectRatio);
         CoreUISignals.Instance.isPanelOpen += IsPanelOpen;
         isPanelOn = false;
         //Camera.main.aspect = (float)Screen.width / (float)Screen.height;

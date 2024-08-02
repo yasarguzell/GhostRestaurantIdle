@@ -72,6 +72,8 @@ public class CookWorker : MonoBehaviour
         // Start cooking
         yield return StartCoroutine(Cook());
 
+        plate.ChangePlateState(PlateState.food);
+
         // Free cooktop
         cooktop.IsInUse = false;
 
