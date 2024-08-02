@@ -1,31 +1,31 @@
 # Boo Land Cafe Idle
 
-## TAKIM
-**Takım Lideri:**
+## Team
+**Team Leader:**
 * [Yaşar GÜZEL](https://www.linkedin.com/in/yasarguzel/)
 
-**Geliştiriciler:**
+**Developers:**
 * [Alperen EKİNCİ](https://www.linkedin.com/in/alperen-ekinci/)
 * [Berk Mustafa KOÇ](https://www.linkedin.com/in/berk-mustafa-koç-5a0463253/)
 * [Emre DEMİRCİ](https://www.linkedin.com/in/emre-demirci0/),
 * [Mustafa Berkay USLU](https://www.linkedin.com/in/usluberkay/)
 * [Sena ÇAKIRLI](https://www.linkedin.com/in/senacakirli/)
 
-**Tasarımcılar:**
+**Designers:**
 * [Metehan ÇİL](https://www.linkedin.com/in/metehancill/)
 * [Ömer Can DURMUŞ](https://www.linkedin.com/in/ömer-can-durmuş-b87962199/)
 * [Seha Bilge ÖZBEK](www.linkedin.com/in/seha-ozbek)
 
-**Sanatçılar:**
+**Artists:**
 * [Elifsu KARAHAN](https://www.linkedin.com/in/elifsu-karahan-8951a031a/)
 
-## KAYNAKLAR
+## Source
 [Drive](https://drive.google.com/drive/folders/1LZxcv5yBleKKZObcxxf7eAA0FWS1AYLA?usp=sharing)
 
-## GELİŞTİRME SÜRECİ
-- Oyunun Adı: Boo Land Cafe Idle
-- Takım: Udo Games **NextGen Devs 2024** – Takım 3
-- Proje Süresi: 1 hafta
+## Development Process
+- Name of Game: Boo Land Cafe Idle
+- Team: Udo Games **NextGen Devs 2024** – Team 3
+- Project Duration: 1 week
 
 ## Introduction
 Welcome to Boo Land Cafe! 
