@@ -147,10 +147,10 @@ public class CookWorker : MonoBehaviour
         }
         callback(cooktop);
     }
-    public void UpdateDatas(float amount, float value)
+    public void UpdateDatas(float movementSpeed, float cookSpeed)
     {
-        _navMeshAgent.speed = amount;
-        _cookingTime = value;
+        _navMeshAgent.speed = movementSpeed;
+        _cookingTime = cookSpeed;
     }
 
 }

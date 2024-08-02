@@ -136,10 +136,10 @@ public class DishwashingWorker : MonoBehaviour
         callback(tray);
     }
 
-    public void UpdateDatas(float amount, float value)
+    public void UpdateDatas(float movementSpeed, float cleaningSpeed)
     {
-        _navMeshAgent.speed = amount;
-        _cleaningTime = value;
+        _navMeshAgent.speed = movementSpeed;
+        _cleaningTime = cleaningSpeed;
     }
 
 }
