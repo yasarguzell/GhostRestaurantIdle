@@ -12,7 +12,6 @@
 * [Sena ÇAKIRLI](https://www.linkedin.com/in/senacakirli/)
 
 **Designers:**
-* [Metehan ÇİL](https://www.linkedin.com/in/metehancill/)
 * [Ömer Can DURMUŞ](https://www.linkedin.com/in/ömer-can-durmuş-b87962199/)
 * [Seha Bilge ÖZBEK](www.linkedin.com/in/seha-ozbek)
 
